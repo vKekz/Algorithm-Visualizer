@@ -12,10 +12,10 @@ export class BubbleSort implements Algorithm {
   }
 
   sort(data: number[]): number[] {
-    var length = data.length;
+    let length = data.length;
 
     while (length > 0) {
-      for (var i = 0; i < length - 1; i++) {
+      for (let i = 0; i < length - 1; i++) {
         const first = data[i];
         const compare = data[i + 1];
 
@@ -24,7 +24,6 @@ export class BubbleSort implements Algorithm {
           data[i + 1] = first;
         }
       }
-
       length--;
     }
 
