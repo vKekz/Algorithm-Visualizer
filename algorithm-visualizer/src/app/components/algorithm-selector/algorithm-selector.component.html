@@ -1,0 +1,5 @@
+<select>
+  @for (algorithm of algorithmHandler.getAlgorithms(); track algorithm) {
+    <option>{{ algorithm.type }}</option>
+  }
+</select>
