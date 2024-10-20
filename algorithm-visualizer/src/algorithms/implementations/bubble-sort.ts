@@ -6,9 +6,28 @@ export class BubbleSort implements Algorithm {
 
   constructor() {
     this.type = AlgorithmType.BubbleSort;
+
+    const data = [103, 33, 2452, 4, 2, 333];
+    console.log(this.sort(data));
   }
 
-  sort(): void {
-    console.log("Test");
+  sort(data: number[]): number[] {
+    var length = data.length;
+
+    while (length > 0) {
+      for (var i = 0; i < length - 1; i++) {
+        const first = data[i];
+        const compare = data[i + 1];
+
+        if (compare <= first) {
+          data[i] = compare;
+          data[i + 1] = first;
+        }
+      }
+
+      length--;
+    }
+
+    return data;
   }
 }

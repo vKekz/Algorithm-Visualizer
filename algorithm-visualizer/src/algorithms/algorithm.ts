@@ -7,5 +7,5 @@ export class Algorithm {
     this.type = algorithmType;
   }
 
-  sort() {}
+  sort(data: number[]) {}
 }
