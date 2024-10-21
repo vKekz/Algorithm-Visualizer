@@ -24,10 +24,10 @@ This is a group project for the computer science classes at the DHBW.
     - `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned` (Optional: If errors occur when running the web-app)
 2. Clone the project to a selected location
     - `git clone https://github.com/vKekz/Algorithm-Visualizer.git`
-
-**[!]** Following commands are executed from a terminal in the selected cloned location (`Algorithm-Visualizer` folder)
 3. Navigate to the `algorithm-visualizer` sub-folder
 4. Install dependencies
-    - `npm install`
+   - `npm install`
 5. Run web-application
-    - `ng serve --open` (optional: --open which opens the browser)
+   - `ng serve --open` (optional: --open, opens the browser)
+
+**[!]** Commands 3-5 are executed from a terminal in the selected cloned location
