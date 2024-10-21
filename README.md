@@ -25,6 +25,7 @@ This is a group project for the computer science classes at the DHBW.
 2. Clone the project to a selected location
     - `git clone https://github.com/vKekz/Algorithm-Visualizer.git`
 3. Navigate to the `algorithm-visualizer` sub-folder
+   - `cd algorithm-visualizer`
 4. Install dependencies
    - `npm install`
 5. Run web-application
