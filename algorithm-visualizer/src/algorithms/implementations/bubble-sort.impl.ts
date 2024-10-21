@@ -8,6 +8,7 @@ export class BubbleSort implements Algorithm {
     this.type = AlgorithmType.BubbleSort;
 
     const data = [103, 33, 2452, 4, 2, 333];
+    console.log(data);
     console.log(this.sort(data));
   }
 
