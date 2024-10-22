@@ -2,7 +2,7 @@
   @for (data of this.algorithmHandler.rawDataList; track data.index) {
     <div
       [ngClass]="data.inComparison ? 'comparison' : ''"
-      [ngStyle]="{ height: data.value * 500 + 'px' }"
+      [ngStyle]="{ height: data.value * 50 + 'vh' }"
       class="visualizer-colum"
     ></div>
   }

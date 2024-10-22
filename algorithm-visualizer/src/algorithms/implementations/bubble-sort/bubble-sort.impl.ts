@@ -1,6 +1,7 @@
-﻿import { Algorithm } from "../algorithm";
-import { AlgorithmType } from "../enums/algorithm-type.enum";
-import { RawData } from "../../interfaces/raw-data";
+﻿import { AlgorithmType } from "../../enums/algorithm-type.enum";
+import { RawData } from "../../../interfaces/raw-data";
+import { Algorithm } from "../../algorithm";
+import { delay } from "../../../helpers/delay.helper";
 
 export class BubbleSort implements Algorithm {
   public type: AlgorithmType;
@@ -20,6 +21,7 @@ export class BubbleSort implements Algorithm {
         const firstValue = first.value;
         const compareValue = compare.value;
 
+        first.inComparison = true;
         compare.inComparison = true;
 
         if (compareValue <= firstValue) {
@@ -27,16 +29,14 @@ export class BubbleSort implements Algorithm {
           compare.value = firstValue;
         }
 
-        await this.timeout(250);
+        await delay(1);
+
+        first.inComparison = false;
         compare.inComparison = false;
       }
       length--;
     }
 
     return data;
-  }
-
-  timeout(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }

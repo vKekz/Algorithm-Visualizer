@@ -9,10 +9,12 @@ import { AlgorithmHandler } from "../../../services/algorithm.handler";
   styleUrl: "./algorithm-data-input.component.css",
 })
 export class AlgorithmDataInputComponent {
-  constructor(protected readonly algorithmHandler: AlgorithmHandler) {}
+  constructor(protected readonly algorithmHandler: AlgorithmHandler) {
+    this.generateData();
+  }
 
   public generateData() {
-    const length = 50;
+    const length = 150;
 
     this.algorithmHandler.clearData();
     for (let i = 1; i < length; i++) {

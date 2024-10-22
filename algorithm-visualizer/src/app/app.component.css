@@ -1,8 +1,18 @@
+:root {
+  --title-height: 50px;
+}
+
 .title {
+  height: var(--title-height);
   text-align: center;
 }
 
 .container {
+  height: calc(100vh - 50px * 2); /* (could be better) subtract the title height */
   display: flex;
   flex-direction: column;
+}
+
+.margin-top {
+  margin-top: auto;
 }

@@ -2,18 +2,17 @@
   display: flex;
   flex-direction: row;
   align-items: flex-end;
+  justify-content: center;
+  margin-top: auto;
 }
 
 .visualizer-colum {
-  width: 50px;
+  flex: 1;
   background-color: whitesmoke;
   border-right: 1px solid black;
+  border-left: 1px solid black;
 }
 
 .comparison {
   background-color: indianred;
-}
-
-.sorted {
-  background-color: lightgreen;
 }

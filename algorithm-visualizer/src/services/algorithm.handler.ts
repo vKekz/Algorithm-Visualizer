@@ -1,7 +1,8 @@
 ﻿import { Injectable } from "@angular/core";
 import { Algorithm } from "../algorithms/algorithm";
-import { BubbleSort } from "../algorithms/implementations/bubble-sort.impl";
 import { RawData } from "../interfaces/raw-data";
+import { BubbleSort } from "../algorithms/implementations/bubble-sort/bubble-sort.impl";
+import { SelectionSort } from "../algorithms/implementations/selection-sort/selection-sort.impl";
 
 @Injectable({
   providedIn: "root",
@@ -17,10 +18,7 @@ export class AlgorithmHandler {
     this.rawDataList = [];
 
     this.registerAlgorithm(new BubbleSort());
-  }
-
-  public fillData(data: RawData[]) {
-    this.rawDataList = data;
+    this.registerAlgorithm(new SelectionSort());
   }
 
   public clearData() {
@@ -28,10 +26,7 @@ export class AlgorithmHandler {
   }
 
   public selectAlgorithm(index: number): void {
-    const algorithm = this.getAlgorithms()[index];
-    console.log(algorithm.type);
-
-    this.algorithm = algorithm;
+    this.algorithm = this.getAlgorithms()[index];
   }
 
   private registerAlgorithm(algorithm: Algorithm): void {
