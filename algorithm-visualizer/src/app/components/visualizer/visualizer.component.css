@@ -1,0 +1,19 @@
+.visualizer-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.visualizer-colum {
+  width: 50px;
+  background-color: whitesmoke;
+  border-right: 1px solid black;
+}
+
+.comparison {
+  background-color: indianred;
+}
+
+.sorted {
+  background-color: lightgreen;
+}

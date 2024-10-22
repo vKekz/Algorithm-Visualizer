@@ -1,5 +1,13 @@
+:root {
+  --body-color: #282828;
+  --text-color: whitesmoke;
+}
+
 body {
   font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  background-color: #282828;
-  color: whitesmoke;
+  background-color: var(--body-color);
+  color: var(--text-color);
+
+  margin: 0 auto;
+  width: 90%;
 }

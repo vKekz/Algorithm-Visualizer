@@ -1,4 +1,5 @@
 ﻿import { AlgorithmType } from "./enums/algorithm-type.enum";
+import { RawData } from "../interfaces/raw-data";
 
 export class Algorithm {
   public type: AlgorithmType;
@@ -7,5 +8,5 @@ export class Algorithm {
     this.type = algorithmType;
   }
 
-  sort(data: number[]) {}
+  sort(data: RawData[]) {}
 }
