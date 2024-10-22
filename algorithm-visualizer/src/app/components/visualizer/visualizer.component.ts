@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { AlgorithmHandler } from "../../../services/algorithm.handler";
+import { NgClass, NgStyle } from "@angular/common";
 
 @Component({
-  selector: 'app-visualizer',
+  selector: "app-visualizer",
   standalone: true,
-  imports: [],
-  templateUrl: './visualizer.component.html',
-  styleUrl: './visualizer.component.css'
+  imports: [NgStyle, NgClass],
+  templateUrl: "./visualizer.component.html",
+  styleUrl: "./visualizer.component.css",
 })
 export class VisualizerComponent {
-
+  constructor(protected readonly algorithmHandler: AlgorithmHandler) {}
 }
