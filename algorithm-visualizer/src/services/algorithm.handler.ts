@@ -3,6 +3,8 @@ import { Algorithm } from "../algorithms/algorithm";
 import { RawData } from "../interfaces/raw-data";
 import { BubbleSort } from "../algorithms/implementations/bubble-sort/bubble-sort.impl";
 import { SelectionSort } from "../algorithms/implementations/selection-sort/selection-sort.impl";
+import { MergeSort } from "../algorithms/implementations/merge-sort/merge-sort.impl";
+import { InsertionSort } from "../algorithms/implementations/insertion-sort/insertion-sort.impl";
 
 @Injectable({
   providedIn: "root",
@@ -19,6 +21,8 @@ export class AlgorithmHandler {
 
     this.registerAlgorithm(new BubbleSort());
     this.registerAlgorithm(new SelectionSort());
+    this.registerAlgorithm(new MergeSort());
+    this.registerAlgorithm(new InsertionSort());
   }
 
   public clearData() {
