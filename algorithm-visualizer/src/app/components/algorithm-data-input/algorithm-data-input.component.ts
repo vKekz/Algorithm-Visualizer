@@ -14,16 +14,16 @@ export class AlgorithmDataInputComponent {
   }
 
   public generateData() {
-    const length = 50;
+    const length = 500;
 
     this.algorithmHandler.clearData();
-    for (let i = 1; i < length; i++) {
+    for (let i = 1; i <= length; i++) {
       this.algorithmHandler.rawDataList.push({
         index: i,
         value: Math.random(),
       });
     }
 
-    this.algorithmHandler.algorithm?.sort(this.algorithmHandler.rawDataList);
+    console.log(this.algorithmHandler.algorithm?.sort(this.algorithmHandler.rawDataList));
   }
 }

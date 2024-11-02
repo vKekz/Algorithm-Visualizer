@@ -3,4 +3,5 @@
   SelectionSort = "Selection Sort",
   MergeSort = "Merge Sort",
   InsertionSort = "Insertion Sort",
+  QuickSort = "Quick Sort",
 }

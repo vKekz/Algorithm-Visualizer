@@ -1,6 +1,7 @@
 import { RawData } from "../../../interfaces/raw-data";
 import { Algorithm } from "../../algorithm";
 import { AlgorithmType } from "../../enums/algorithm-type.enum";
+import { delay } from "../../../helpers/delay.helper";
 
 export class InsertionSort implements Algorithm {
   public type: AlgorithmType;
@@ -9,23 +10,29 @@ export class InsertionSort implements Algorithm {
     this.type = AlgorithmType.InsertionSort;
   }
 
-  sort(data: RawData[]): RawData[] {
+  async sort(data: RawData[]): Promise<RawData[]> {
     const length = data.length;
-    let i = 1;
 
-    while (i < length) {
-      const element = data[i];
+    for (let i = 1; i < length; i++) {
       let j = i;
+      const element = data[i];
 
-      while (j > 0 && element < data[j - 1]) {
+      element.inComparison = true;
+
+      // comparison
+      while (j > 0 && element.value < data[j - 1].value) {
+        // the swap
         data[j] = data[j - 1];
         data[j - 1] = element;
 
-        j = j - 1;
+        j -= 1;
 
-        data[j] = element;
-        i = i + 1;
+        await delay(100);
       }
+
+      element.inComparison = false;
+
+      data[j] = element;
     }
 
     return data;

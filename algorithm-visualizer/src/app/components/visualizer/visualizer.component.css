@@ -16,3 +16,11 @@
 .comparison {
   background-color: indianred;
 }
+
+.other-comparison {
+  background-color: yellow;
+}
+
+.pivot {
+  background-color: cyan;
+}
