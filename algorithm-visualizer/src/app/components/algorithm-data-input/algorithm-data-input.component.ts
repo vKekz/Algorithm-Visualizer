@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { AlgorithmHandler } from "../../../services/algorithm.handler";
+import { DEFAULT_AMOUNT_OF_ELEMENTS } from "../../../constants/app.constants";
 
 @Component({
   selector: "app-algorithm-data-input",
@@ -14,7 +15,7 @@ export class AlgorithmDataInputComponent {
   }
 
   public generateData() {
-    const length = 500;
+    const length = DEFAULT_AMOUNT_OF_ELEMENTS;
 
     this.algorithmHandler.clearData();
     for (let i = 1; i <= length; i++) {

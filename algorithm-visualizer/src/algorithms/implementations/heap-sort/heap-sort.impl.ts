@@ -1,6 +1,7 @@
 import { RawData } from "../../../interfaces/raw-data";
 import { Algorithm } from "../../algorithm";
 import { AlgorithmType } from "../../enums/algorithm-type.enum";
+import { delay } from "../../../helpers/delay.helper";
 
 export class HeapSort implements Algorithm {
   public type: AlgorithmType;
@@ -9,39 +10,50 @@ export class HeapSort implements Algorithm {
     this.type = AlgorithmType.HeapSort;
   }
 
-  sort(data: RawData[]): void {
+  async sort(data: RawData[]): Promise<void> {
     let length = data.length;
+    await this.heapify(data, length);
 
-    for (let i = Math.floor(length / 2); i > 1; i--) {
-      this.sink(data, i, length);
-    }
+    let end = length;
+    while (end > 1) {
+      end--;
 
-    while (length > 1) {
-      const temp = data[1];
-      data[1] = data[length];
-      data[length] = temp;
+      const temp = data[end];
+      data[end] = data[0];
+      data[0] = temp;
 
-      length--;
-
-      this.sink(data, 1, length);
+      await this.sink(data, 0, end);
     }
   }
 
-  private sink(data: RawData[], index: number, length: number) {
-    while (2 * index <= length) {
-      let j = 2 * index;
-      if (j < length && data[j].value < data[j + 1].value) {
-        j++;
+  private async heapify(data: RawData[], count: number) {
+    let start = Math.floor((count - 1 - 1) / 2) + 1;
+
+    while (start > 0) {
+      start--;
+      await this.sink(data, start, count);
+    }
+  }
+
+  private async sink(data: RawData[], root: number, end: number) {
+    while (2 * root + 1 < end) {
+      let leftChildIndex = 2 * root + 1;
+
+      if (leftChildIndex + 1 < end && data[leftChildIndex].value < data[leftChildIndex + 1].value) {
+        leftChildIndex++;
       }
 
-      if (data[index].value < data[j].value) {
+      await delay(25);
+
+      if (data[root].value >= data[leftChildIndex].value) {
         break;
       }
 
-      const temp = data[index];
-      data[index] = data[j];
-      data[j] = temp;
-      index = j;
+      const temp = data[root];
+      data[root] = data[leftChildIndex];
+      data[leftChildIndex] = temp;
+
+      root = leftChildIndex;
     }
   }
 }
