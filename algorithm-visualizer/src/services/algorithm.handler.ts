@@ -6,6 +6,7 @@ import { SelectionSort } from "../algorithms/implementations/selection-sort/sele
 import { MergeSort } from "../algorithms/implementations/merge-sort/merge-sort.impl";
 import { InsertionSort } from "../algorithms/implementations/insertion-sort/insertion-sort.impl";
 import { QuickSort } from "../algorithms/implementations/quick-sort/quick-sort.impl";
+import { HeapSort } from "../algorithms/implementations/heap-sort/heap-sort.impl";
 
 @Injectable({
   providedIn: "root",
@@ -25,6 +26,7 @@ export class AlgorithmHandler {
     this.registerAlgorithm(new MergeSort());
     this.registerAlgorithm(new InsertionSort());
     this.registerAlgorithm(new QuickSort());
+    this.registerAlgorithm(new HeapSort());
   }
 
   public clearData() {
