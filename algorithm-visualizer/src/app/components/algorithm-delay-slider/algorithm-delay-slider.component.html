@@ -1,0 +1,11 @@
+<div class="delay-container">
+  <label class="label" for="delay">Delay: {{ this.algorithmHandler.sortingDelay }}ms</label>
+  <input
+    (change)="this.handleDelayInput($event)"
+    [min]="MIN_DELAY"
+    [max]="MAX_DELAY"
+    [value]="this.algorithmHandler.sortingDelay"
+    id="delay"
+    type="range"
+  />
+</div>

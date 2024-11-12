@@ -2,11 +2,12 @@
 import { Algorithm } from "../../algorithm";
 import { AlgorithmType } from "../../enums/algorithm-type.enum";
 import { delay } from "../../../helpers/delay.helper";
+import { AlgorithmHandler } from "../../../services/algorithm.handler";
 
 export class SelectionSort implements Algorithm {
   public type: AlgorithmType;
 
-  constructor() {
+  constructor(private readonly algorithmHandler: AlgorithmHandler) {
     this.type = AlgorithmType.SelectionSort;
   }
 
@@ -31,7 +32,7 @@ export class SelectionSort implements Algorithm {
 
         j++;
 
-        await delay(1);
+        await delay(this.algorithmHandler.sortingDelay);
 
         first.inComparison = false;
         compare.inComparison = false;

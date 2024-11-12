@@ -14,7 +14,7 @@ export class AlgorithmDataInputComponent {
   }
 
   public generateData() {
-    const length = 500;
+    const length = this.algorithmHandler.amountOfElements;
 
     this.algorithmHandler.clearData();
     for (let i = 1; i <= length; i++) {

@@ -1,0 +1,11 @@
+<div class="elements-container">
+  <label class="label" for="elements">Elements: {{ this.algorithmHandler.amountOfElements }}</label>
+  <input
+    (change)="this.handleElementsInput($event)"
+    [min]="MIN_ELEMENTS"
+    [max]="MAX_ELEMENTS"
+    [value]="this.algorithmHandler.amountOfElements"
+    id="elements"
+    type="range"
+  />
+</div>

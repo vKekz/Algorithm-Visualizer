@@ -2,11 +2,12 @@ import { RawData } from "../../../interfaces/raw-data";
 import { Algorithm } from "../../algorithm";
 import { AlgorithmType } from "../../enums/algorithm-type.enum";
 import { delay } from "../../../helpers/delay.helper";
+import { AlgorithmHandler } from "../../../services/algorithm.handler";
 
 export class InsertionSort implements Algorithm {
   public type: AlgorithmType;
 
-  constructor() {
+  constructor(private readonly algorithmHandler: AlgorithmHandler) {
     this.type = AlgorithmType.InsertionSort;
   }
 
@@ -27,7 +28,7 @@ export class InsertionSort implements Algorithm {
 
         j -= 1;
 
-        await delay(100);
+        await delay(this.algorithmHandler.sortingDelay);
       }
 
       element.inComparison = false;
