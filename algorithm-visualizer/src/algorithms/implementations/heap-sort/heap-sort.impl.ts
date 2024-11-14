@@ -12,6 +12,11 @@ export class HeapSort implements Algorithm {
 
   async sort(data: RawData[]): Promise<void> {
     let length = data.length;
+    await this.heapSort(data, length);
+  }
+
+  // https://en.wikipedia.org/wiki/Heapsort
+  private async heapSort(data: RawData[], length: number) {
     await this.heapify(data, length);
 
     let end = length;
@@ -22,7 +27,7 @@ export class HeapSort implements Algorithm {
       data[end] = data[0];
       data[0] = temp;
 
-      await this.sink(data, 0, end);
+      await this.siftDown(data, 0, end);
     }
   }
 
@@ -31,11 +36,11 @@ export class HeapSort implements Algorithm {
 
     while (start > 0) {
       start--;
-      await this.sink(data, start, count);
+      await this.siftDown(data, start, count);
     }
   }
 
-  private async sink(data: RawData[], root: number, end: number) {
+  private async siftDown(data: RawData[], root: number, end: number) {
     while (2 * root + 1 < end) {
       let leftChildIndex = 2 * root + 1;
 
@@ -43,11 +48,16 @@ export class HeapSort implements Algorithm {
         leftChildIndex++;
       }
 
+      data[root].inComparison = true;
+
       await delay(25);
 
       if (data[root].value >= data[leftChildIndex].value) {
+        data[root].inComparison = false;
         break;
       }
+
+      data[root].inComparison = false;
 
       const temp = data[root];
       data[root] = data[leftChildIndex];
