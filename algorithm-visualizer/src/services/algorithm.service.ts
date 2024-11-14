@@ -32,13 +32,14 @@ export class AlgorithmService {
     this.visualizerService.generateRawSortingData(this.optionsService.amountOfElements);
   }
 
-  public startSorting() {
+  public async startSorting() {
     const algorithm = this.currentAlgorithm;
     if (algorithm == null) {
       return;
     }
 
-    this.currentAlgorithm?.sort(this.visualizerService.rawSortingData, this.optionsService.delay);
+    await this.currentAlgorithm?.sort(this.visualizerService.rawSortingData, this.optionsService.delay);
+    console.log("finished");
   }
 
   public selectAlgorithm(index: number): void {

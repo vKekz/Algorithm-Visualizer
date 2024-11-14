@@ -10,7 +10,7 @@ export class SelectionSort implements Algorithm {
     this.type = AlgorithmType.SelectionSort;
   }
 
-  async sort(data: RawData[], delay: number): Promise<RawData[]> {
+  async sort(data: RawData[], delay: number) {
     let i = 0,
       length = data.length;
 
@@ -43,7 +43,5 @@ export class SelectionSort implements Algorithm {
 
       i++;
     }
-
-    return data;
   }
 }

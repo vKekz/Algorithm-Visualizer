@@ -10,7 +10,7 @@ export class InsertionSort implements Algorithm {
     this.type = AlgorithmType.InsertionSort;
   }
 
-  async sort(data: RawData[], delay: number): Promise<RawData[]> {
+  async sort(data: RawData[], delay: number) {
     const length = data.length;
 
     for (let i = 1; i < length; i++) {
@@ -34,7 +34,5 @@ export class InsertionSort implements Algorithm {
 
       data[j] = element;
     }
-
-    return data;
   }
 }
