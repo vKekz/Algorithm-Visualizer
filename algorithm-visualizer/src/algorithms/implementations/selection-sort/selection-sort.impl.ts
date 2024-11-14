@@ -1,17 +1,16 @@
 ﻿import { RawData } from "../../../interfaces/raw-data";
 import { Algorithm } from "../../algorithm";
 import { AlgorithmType } from "../../enums/algorithm-type.enum";
-import { delay } from "../../../helpers/delay.helper";
-import { AlgorithmHandler } from "../../../services/algorithm.handler";
+import { startDelay } from "../../../helpers/delay.helper";
 
 export class SelectionSort implements Algorithm {
   public type: AlgorithmType;
 
-  constructor(private readonly algorithmHandler: AlgorithmHandler) {
+  constructor() {
     this.type = AlgorithmType.SelectionSort;
   }
 
-  async sort(data: RawData[]): Promise<RawData[]> {
+  async sort(data: RawData[], delay: number): Promise<RawData[]> {
     let i = 0,
       length = data.length;
 
@@ -32,7 +31,7 @@ export class SelectionSort implements Algorithm {
 
         j++;
 
-        await delay(this.algorithmHandler.sortingDelay);
+        await startDelay(delay);
 
         first.inComparison = false;
         compare.inComparison = false;

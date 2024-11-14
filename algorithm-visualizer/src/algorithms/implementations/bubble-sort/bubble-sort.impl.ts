@@ -1,17 +1,16 @@
 ﻿import { AlgorithmType } from "../../enums/algorithm-type.enum";
 import { RawData } from "../../../interfaces/raw-data";
 import { Algorithm } from "../../algorithm";
-import { delay } from "../../../helpers/delay.helper";
-import { AlgorithmHandler } from "../../../services/algorithm.handler";
+import { startDelay } from "../../../helpers/delay.helper";
 
 export class BubbleSort implements Algorithm {
   public type: AlgorithmType;
 
-  constructor(private readonly algorithmHandler: AlgorithmHandler) {
+  constructor() {
     this.type = AlgorithmType.BubbleSort;
   }
 
-  async sort(data: RawData[]): Promise<RawData[]> {
+  async sort(data: RawData[], delay: number): Promise<RawData[]> {
     let length = data.length;
 
     while (length > 0) {
@@ -30,7 +29,7 @@ export class BubbleSort implements Algorithm {
           compare.value = firstValue;
         }
 
-        await delay(this.algorithmHandler.sortingDelay);
+        await startDelay(delay);
 
         first.inComparison = false;
         compare.inComparison = false;

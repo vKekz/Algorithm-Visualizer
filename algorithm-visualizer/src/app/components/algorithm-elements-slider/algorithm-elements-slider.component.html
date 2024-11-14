@@ -1,10 +1,11 @@
 <div class="elements-container">
-  <label class="label" for="elements">Elements: {{ this.algorithmHandler.amountOfElements }}</label>
+  <label class="label" for="elements">Elements: {{ this.optionsService.amountOfElements }}</label>
+  <!--  TODO: Disable if running -->
   <input
     (change)="this.handleElementsInput($event)"
     [min]="MIN_ELEMENTS"
     [max]="MAX_ELEMENTS"
-    [value]="this.algorithmHandler.amountOfElements"
+    [value]="this.optionsService.amountOfElements"
     id="elements"
     type="range"
   />

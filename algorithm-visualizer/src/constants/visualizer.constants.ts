@@ -4,6 +4,6 @@ export const MIN_DELAY: number = 1;
 export const MAX_DELAY: number = 1000;
 
 // Default amount of elements
-export const ELEMENTS_DEFAULT: number = 100;
+export const ELEMENTS_DEFAULT: number = 50;
 export const MIN_ELEMENTS: number = 2;
-export const MAX_ELEMENTS: number = 500;
+export const MAX_ELEMENTS: number = 250;
