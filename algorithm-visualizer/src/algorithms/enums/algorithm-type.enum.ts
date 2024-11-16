@@ -4,4 +4,5 @@
   MergeSort = "Merge Sort",
   InsertionSort = "Insertion Sort",
   QuickSort = "Quick Sort",
+  HeapSort = "Heap Sort",
 }

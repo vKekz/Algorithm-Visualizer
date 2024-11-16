@@ -5,6 +5,7 @@ import { SelectionSort } from "../algorithms/implementations/selection-sort/sele
 import { MergeSort } from "../algorithms/implementations/merge-sort/merge-sort.impl";
 import { InsertionSort } from "../algorithms/implementations/insertion-sort/insertion-sort.impl";
 import { QuickSort } from "../algorithms/implementations/quick-sort/quick-sort.impl";
+import { HeapSort } from "../algorithms/implementations/heap-sort/heap-sort.impl";
 import { VisualizerService } from "./visualizer.service";
 import { OptionsService } from "./options.service";
 
@@ -27,6 +28,7 @@ export class AlgorithmService {
     this.registerAlgorithm(new MergeSort());
     this.registerAlgorithm(new InsertionSort());
     this.registerAlgorithm(new QuickSort());
+    this.registerAlgorithm(new HeapSort());
 
     // Create random data on startup
     this.visualizerService.generateRawSortingData(this.optionsService.amountOfElements);

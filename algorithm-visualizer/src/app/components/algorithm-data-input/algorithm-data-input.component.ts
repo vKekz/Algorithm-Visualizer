@@ -17,8 +17,8 @@ export class AlgorithmDataInputComponent {
     private readonly optionsService: OptionsService
   ) {}
 
-  public generateData() {
+  public async generateData() {
     this.visualizerService.generateRawSortingData(this.optionsService.amountOfElements);
-    this.algorithmService.startSorting();
+    await this.algorithmService.startSorting();
   }
 }
