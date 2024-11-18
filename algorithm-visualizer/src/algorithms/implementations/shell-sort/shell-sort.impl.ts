@@ -16,7 +16,7 @@ export class ShellSort implements Algorithm {
 
   // https://en.wikipedia.org/wiki/Shellsort
   private async shellSort(data: RawData[], delay: number) {
-    const gaps: number[] = this.generateGaps(data.length).reverse();
+    const gaps: number[] = this.generateGaps(data.length);
 
     for (const gap of gaps) {
       for (let i = gap; i < data.length; i++) {
@@ -42,7 +42,7 @@ export class ShellSort implements Algorithm {
     const gamma: number = 2.243609061420001;
     const gaps: number[] = [];
 
-    for (let n = 1; n < max; n++) {
+    for (let n = max; n > 0; n--) {
       const gap = Math.ceil((Math.pow(gamma, n) - 1) / (gamma - 1));
       gaps.push(gap);
     }
