@@ -1,7 +1,7 @@
 import { RawData } from "../../../interfaces/raw-data";
 import { Algorithm } from "../../algorithm";
 import { AlgorithmType } from "../../enums/algorithm-type.enum";
-import { delay } from "../../../helpers/delay.helper";
+import { startDelay } from "../../../helpers/delay.helper";
 
 export class InsertionSort implements Algorithm {
   public type: AlgorithmType;
@@ -10,7 +10,7 @@ export class InsertionSort implements Algorithm {
     this.type = AlgorithmType.InsertionSort;
   }
 
-  async sort(data: RawData[]): Promise<RawData[]> {
+  async sort(data: RawData[], delay: number) {
     const length = data.length;
 
     for (let i = 1; i < length; i++) {
@@ -27,14 +27,12 @@ export class InsertionSort implements Algorithm {
 
         j -= 1;
 
-        await delay(100);
+        await startDelay(delay);
       }
 
       element.inComparison = false;
 
       data[j] = element;
     }
-
-    return data;
   }
 }

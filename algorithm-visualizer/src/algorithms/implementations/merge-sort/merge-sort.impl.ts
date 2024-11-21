@@ -1,7 +1,7 @@
 import { RawData } from "../../../interfaces/raw-data";
 import { Algorithm } from "../../algorithm";
 import { AlgorithmType } from "../../enums/algorithm-type.enum";
-import { delay } from "../../../helpers/delay.helper";
+import { startDelay } from "../../../helpers/delay.helper";
 
 export class MergeSort implements Algorithm {
   public type: AlgorithmType;
@@ -10,20 +10,20 @@ export class MergeSort implements Algorithm {
     this.type = AlgorithmType.MergeSort;
   }
 
-  async sort(data: RawData[]) {
-    await this.mergeSort(data, 0, data.length);
+  async sort(data: RawData[], delay: number) {
+    await this.mergeSort(data, delay, 0, data.length);
   }
 
   // From https://github.com/Myphz/sortvisualizer/blob/master/static/js/sorts/mergesort.js
   // TODO: Write better function (not copied)
-  private async mergeSort(data: RawData[], start: number, end: number) {
+  private async mergeSort(data: RawData[], delay: number, start: number, end: number) {
     if (start >= end - 1) {
       return;
     }
     const mid = start + ~~((end - start) / 2);
 
-    await this.mergeSort(data, start, mid);
-    await this.mergeSort(data, mid, end);
+    await this.mergeSort(data, delay, start, mid);
+    await this.mergeSort(data, delay, mid, end);
 
     const cache: RawData[] = [];
     let k = mid;
@@ -40,7 +40,7 @@ export class MergeSort implements Algorithm {
 
     for (let i = 0; i < k - start; i++) {
       data[i + start] = cache[i];
-      await delay(1);
+      await startDelay(delay);
     }
   }
 

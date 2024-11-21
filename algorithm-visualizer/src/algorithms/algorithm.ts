@@ -8,5 +8,5 @@ export class Algorithm {
     this.type = algorithmType;
   }
 
-  sort(data: RawData[]) {}
+  async sort(data: RawData[], delay: number) {}
 }
