@@ -8,6 +8,7 @@ import { QuickSort } from "../algorithms/implementations/quick-sort/quick-sort.i
 import { HeapSort } from "../algorithms/implementations/heap-sort/heap-sort.impl";
 import { VisualizerService } from "./visualizer.service";
 import { OptionsService } from "./options.service";
+import { ShellSort } from "../algorithms/implementations/shell-sort/shell-sort.impl";
 
 @Injectable({
   providedIn: "root",
@@ -29,6 +30,7 @@ export class AlgorithmService {
     this.registerAlgorithm(new InsertionSort());
     this.registerAlgorithm(new QuickSort());
     this.registerAlgorithm(new HeapSort());
+    this.registerAlgorithm(new ShellSort());
 
     // Create random data on startup
     this.visualizerService.generateRawSortingData(this.optionsService.amountOfElements);
