@@ -2,11 +2,13 @@
 import { Algorithm } from "../../algorithm";
 import { AlgorithmType } from "../../enums/algorithm-type.enum";
 import { startDelay } from "../../../helpers/delay.helper";
+import { VisualizerService } from "../../../services/visualizer.service";
+import { State } from "../../../enums/state.enum";
 
 export class SelectionSort implements Algorithm {
   public type: AlgorithmType;
 
-  constructor() {
+  constructor(private readonly visualizerService: VisualizerService) {
     this.type = AlgorithmType.SelectionSort;
   }
 
@@ -31,6 +33,12 @@ export class SelectionSort implements Algorithm {
 
         j++;
 
+        while (this.visualizerService.state === State.Paused) {
+          await startDelay(1);
+        }
+        if (this.visualizerService.state == State.Stopped) {
+          break;
+        }
         await startDelay(delay);
 
         first.inComparison = false;

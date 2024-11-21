@@ -2,11 +2,13 @@ import { RawData } from "../../../interfaces/raw-data";
 import { Algorithm } from "../../algorithm";
 import { AlgorithmType } from "../../enums/algorithm-type.enum";
 import { startDelay } from "../../../helpers/delay.helper";
+import { VisualizerService } from "../../../services/visualizer.service";
+import { State } from "../../../enums/state.enum";
 
 export class HeapSort implements Algorithm {
   public type: AlgorithmType;
 
-  constructor() {
+  constructor(private readonly visualizerService: VisualizerService) {
     this.type = AlgorithmType.HeapSort;
   }
 
@@ -50,6 +52,12 @@ export class HeapSort implements Algorithm {
 
       data[root].inComparison = true;
 
+      while (this.visualizerService.state === State.Paused) {
+        await startDelay(1);
+      }
+      if (this.visualizerService.state == State.Stopped) {
+        break;
+      }
       await startDelay(delay);
 
       if (data[root].value >= data[leftChildIndex].value) {

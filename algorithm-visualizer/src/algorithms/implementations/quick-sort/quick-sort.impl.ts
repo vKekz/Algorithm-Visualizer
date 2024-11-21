@@ -2,11 +2,13 @@
 import { Algorithm } from "../../algorithm";
 import { AlgorithmType } from "../../enums/algorithm-type.enum";
 import { startDelay } from "../../../helpers/delay.helper";
+import { VisualizerService } from "../../../services/visualizer.service";
+import { State } from "../../../enums/state.enum";
 
 export class QuickSort implements Algorithm {
   public type: AlgorithmType;
 
-  constructor() {
+  constructor(private readonly visualizerService: VisualizerService) {
     this.type = AlgorithmType.QuickSort;
   }
 
@@ -16,6 +18,13 @@ export class QuickSort implements Algorithm {
 
   private async quickSort(data: RawData[], delay: number, lower: number, higher: number) {
     if (lower >= 0 && higher >= 0 && lower < higher) {
+      while (this.visualizerService.state === State.Paused) {
+        await startDelay(1);
+      }
+      if (this.visualizerService.state == State.Stopped) {
+        return;
+      }
+
       const partition = await this.partition(data, delay, lower, higher);
       await this.quickSort(data, delay, lower, partition);
       await this.quickSort(data, delay, partition + 1, higher);

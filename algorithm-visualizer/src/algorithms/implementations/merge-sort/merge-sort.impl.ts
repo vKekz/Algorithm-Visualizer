@@ -2,11 +2,13 @@ import { RawData } from "../../../interfaces/raw-data";
 import { Algorithm } from "../../algorithm";
 import { AlgorithmType } from "../../enums/algorithm-type.enum";
 import { startDelay } from "../../../helpers/delay.helper";
+import { VisualizerService } from "../../../services/visualizer.service";
+import { State } from "../../../enums/state.enum";
 
 export class MergeSort implements Algorithm {
   public type: AlgorithmType;
 
-  constructor() {
+  constructor(private readonly visualizerService: VisualizerService) {
     this.type = AlgorithmType.MergeSort;
   }
 
@@ -40,6 +42,12 @@ export class MergeSort implements Algorithm {
 
     for (let i = 0; i < k - start; i++) {
       data[i + start] = cache[i];
+      while (this.visualizerService.state === State.Paused) {
+        await startDelay(1);
+      }
+      if (this.visualizerService.state == State.Stopped) {
+        break;
+      }
       await startDelay(delay);
     }
   }

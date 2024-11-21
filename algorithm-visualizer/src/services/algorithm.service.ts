@@ -8,6 +8,7 @@ import { QuickSort } from "../algorithms/implementations/quick-sort/quick-sort.i
 import { HeapSort } from "../algorithms/implementations/heap-sort/heap-sort.impl";
 import { VisualizerService } from "./visualizer.service";
 import { OptionsService } from "./options.service";
+import { State } from "../enums/state.enum";
 
 @Injectable({
   providedIn: "root",
@@ -23,25 +24,31 @@ export class AlgorithmService {
   ) {
     this.algorithmList = [];
 
-    this.registerAlgorithm(new BubbleSort());
-    this.registerAlgorithm(new SelectionSort());
-    this.registerAlgorithm(new MergeSort());
-    this.registerAlgorithm(new InsertionSort());
-    this.registerAlgorithm(new QuickSort());
-    this.registerAlgorithm(new HeapSort());
+    this.registerAlgorithm(new BubbleSort(this.visualizerService));
+    this.registerAlgorithm(new SelectionSort(this.visualizerService));
+    this.registerAlgorithm(new MergeSort(this.visualizerService));
+    this.registerAlgorithm(new InsertionSort(this.visualizerService));
+    this.registerAlgorithm(new QuickSort(this.visualizerService));
+    this.registerAlgorithm(new HeapSort(this.visualizerService));
 
     // Create random data on startup
     this.visualizerService.generateRawSortingData(this.optionsService.amountOfElements);
   }
 
   public async startSorting() {
+    if (this.visualizerService.state !== State.Stopped) {
+      return;
+    }
+
     const algorithm = this.currentAlgorithm;
     if (algorithm == null) {
       return;
     }
 
-    await this.currentAlgorithm?.sort(this.visualizerService.rawSortingData, this.optionsService.delay);
-    console.log("finished");
+    this.visualizerService.state = State.Running;
+    await algorithm.sort(this.visualizerService.rawSortingData, this.optionsService.delay);
+    this.visualizerService.state = State.Stopped;
+    console.log(this.visualizerService.state);
   }
 
   public selectAlgorithm(index: number): void {
