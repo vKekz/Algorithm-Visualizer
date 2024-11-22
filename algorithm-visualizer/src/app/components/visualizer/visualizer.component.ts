@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
-import { AlgorithmHandler } from "../../../services/algorithm.handler";
 import { NgClass, NgStyle } from "@angular/common";
 import { RawData } from "../../../interfaces/raw-data";
+import { VisualizerService } from "../../../services/visualizer.service";
 
 @Component({
   selector: "app-visualizer",
@@ -11,7 +11,7 @@ import { RawData } from "../../../interfaces/raw-data";
   styleUrl: "./visualizer.component.css",
 })
 export class VisualizerComponent {
-  constructor(protected readonly algorithmHandler: AlgorithmHandler) {}
+  constructor(protected readonly visualizerService: VisualizerService) {}
 
   public getStyleClasses(data: RawData) {
     let classes = "";

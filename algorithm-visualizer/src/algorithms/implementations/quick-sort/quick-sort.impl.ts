@@ -1,7 +1,7 @@
 ﻿import { RawData } from "../../../interfaces/raw-data";
 import { Algorithm } from "../../algorithm";
 import { AlgorithmType } from "../../enums/algorithm-type.enum";
-import { delay } from "../../../helpers/delay.helper";
+import { startDelay } from "../../../helpers/delay.helper";
 
 export class QuickSort implements Algorithm {
   public type: AlgorithmType;
@@ -10,20 +10,20 @@ export class QuickSort implements Algorithm {
     this.type = AlgorithmType.QuickSort;
   }
 
-  async sort(data: RawData[]) {
-    await this.quickSort(data, 0, data.length - 1);
+  async sort(data: RawData[], delay: number) {
+    await this.quickSort(data, delay, 0, data.length - 1);
   }
 
-  private async quickSort(data: RawData[], lower: number, higher: number) {
+  private async quickSort(data: RawData[], delay: number, lower: number, higher: number) {
     if (lower >= 0 && higher >= 0 && lower < higher) {
-      const partition = await this.partition(data, lower, higher);
-      await this.quickSort(data, lower, partition);
-      await this.quickSort(data, partition + 1, higher);
+      const partition = await this.partition(data, delay, lower, higher);
+      await this.quickSort(data, delay, lower, partition);
+      await this.quickSort(data, delay, partition + 1, higher);
     }
   }
 
   // Implemented from https://en.wikipedia.org/wiki/Quicksort#Hoare_partition_scheme
-  private async partition(data: RawData[], lower: number, higher: number) {
+  private async partition(data: RawData[], delay: number, lower: number, higher: number) {
     const pivot = data[lower];
     pivot.isPivot = true;
 
@@ -42,7 +42,7 @@ export class QuickSort implements Algorithm {
       data[left].inComparison = true;
       data[right].inComparison = true;
 
-      await delay(50);
+      await startDelay(delay);
 
       if (left >= right) {
         pivot.isPivot = false;

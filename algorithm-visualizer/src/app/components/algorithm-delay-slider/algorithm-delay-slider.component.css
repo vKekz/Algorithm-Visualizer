@@ -1,0 +1,8 @@
+.delay-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  text-align: center;
+}

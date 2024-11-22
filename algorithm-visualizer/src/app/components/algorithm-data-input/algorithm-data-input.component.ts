@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
-import { AlgorithmHandler } from "../../../services/algorithm.handler";
+import { VisualizerService } from "../../../services/visualizer.service";
+import { OptionsService } from "../../../services/options.service";
+import { AlgorithmService } from "../../../services/algorithm.service";
 
 @Component({
   selector: "app-algorithm-data-input",
@@ -9,21 +11,14 @@ import { AlgorithmHandler } from "../../../services/algorithm.handler";
   styleUrl: "./algorithm-data-input.component.css",
 })
 export class AlgorithmDataInputComponent {
-  constructor(protected readonly algorithmHandler: AlgorithmHandler) {
-    this.generateData();
-  }
+  constructor(
+    private readonly algorithmService: AlgorithmService,
+    private readonly visualizerService: VisualizerService,
+    private readonly optionsService: OptionsService
+  ) {}
 
-  public generateData() {
-    const length = 500;
-
-    this.algorithmHandler.clearData();
-    for (let i = 1; i <= length; i++) {
-      this.algorithmHandler.rawDataList.push({
-        index: i,
-        value: Math.random(),
-      });
-    }
-
-    console.log(this.algorithmHandler.algorithm?.sort(this.algorithmHandler.rawDataList));
+  public async generateData() {
+    this.visualizerService.generateRawSortingData(this.optionsService.amountOfElements);
+    await this.algorithmService.startSorting();
   }
 }
