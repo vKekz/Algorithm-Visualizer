@@ -16,3 +16,9 @@
 .margin-top {
   margin-top: auto;
 }
+
+.headcontainer {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -4,3 +4,14 @@
   flex-direction: column;
   justify-content: center;
 }
+.algogenerator{
+  border: none;
+  border-radius: 10px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  cursor: pointer;
+  background-color: var(--text-color);
+  color: var(--button-text-color);
+}

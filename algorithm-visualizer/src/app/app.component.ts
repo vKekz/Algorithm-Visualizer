@@ -11,3 +11,21 @@ import {AlgorithmOptionsComponent} from './components/algorithm-options/algorith
   styleUrl: "./app.component.css",
 })
 export class AppComponent {}
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const checkbox = document.getElementById('togglecheckbox') as HTMLInputElement;
+
+  checkbox.addEventListener('change', () => {
+    if (checkbox.checked) {
+      document.documentElement.style.setProperty('--body-color', 'linear-gradient(to top right, #191d32, #333b52)');
+      document.documentElement.style.setProperty('--text-color', '#F7DD72');
+      document.documentElement.style.setProperty('--button-text-color', 'black');
+    }else{
+      document.documentElement.style.setProperty('--body-color', 'linear-gradient(to top right, #F7DD72, #CD956D)');
+      document.documentElement.style.setProperty('--text-color', 'black');
+      document.documentElement.style.setProperty('--button-text-color', '#F7DD72');
+    }
+  });
+});
