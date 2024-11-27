@@ -22,6 +22,9 @@ export class BubbleSort implements Algorithm {
         first.inComparison = true;
         compare.inComparison = true;
 
+        this.visualizerService.incrementCompare();
+        
+
         if (compare.value <= first.value) {
           data[i] = data[i + 1];
           data[i + 1] = first;

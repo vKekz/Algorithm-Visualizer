@@ -42,7 +42,8 @@ export class QuickSort implements Algorithm {
 
       data[left].inComparison = true;
       data[right].inComparison = true;
-
+      this.visualizerService.incrementCompare();
+      
       await startDelay(delay);
 
       if (left >= right) {

@@ -50,6 +50,8 @@ export class HeapSort implements Algorithm {
       }
 
       data[root].inComparison = true;
+      this.visualizerService.incrementCompare();
+      
 
       await startDelay(delay);
 
