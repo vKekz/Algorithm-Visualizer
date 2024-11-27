@@ -24,13 +24,13 @@ export class AlgorithmService {
   ) {
     this.algorithmList = [];
 
-    this.registerAlgorithm(new BubbleSort());
-    this.registerAlgorithm(new SelectionSort());
-    this.registerAlgorithm(new MergeSort());
-    this.registerAlgorithm(new InsertionSort());
-    this.registerAlgorithm(new QuickSort());
-    this.registerAlgorithm(new HeapSort());
-    this.registerAlgorithm(new ShellSort());
+    this.registerAlgorithm(new BubbleSort(this.visualizerService));
+    this.registerAlgorithm(new SelectionSort(this.visualizerService));
+    this.registerAlgorithm(new MergeSort(this.visualizerService));
+    this.registerAlgorithm(new InsertionSort(this.visualizerService));
+    this.registerAlgorithm(new QuickSort(this.visualizerService));
+    this.registerAlgorithm(new HeapSort(this.visualizerService));
+    this.registerAlgorithm(new ShellSort(this.visualizerService));
 
     // Create random data on startup
     this.visualizerService.generateRawSortingData(this.optionsService.amountOfElements);

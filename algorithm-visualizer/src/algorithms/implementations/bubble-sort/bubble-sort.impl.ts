@@ -2,11 +2,12 @@
 import { RawData } from "../../../interfaces/raw-data";
 import { Algorithm } from "../../algorithm";
 import { startDelay } from "../../../helpers/delay.helper";
+import { VisualizerService } from "../../../services/visualizer.service";
 
 export class BubbleSort implements Algorithm {
   public type: AlgorithmType;
 
-  constructor() {
+  constructor(private readonly visualizerService: VisualizerService) {
     this.type = AlgorithmType.BubbleSort;
   }
 
