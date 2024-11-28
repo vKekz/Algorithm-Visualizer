@@ -1,8 +1,13 @@
+input[type="range"] {
+  accent-color: var(--text-color);
+}
+
 .delay-container {
   display: flex;
   flex-direction: column;
 }
 
 .label {
+  font-size: 1.1rem;
   text-align: center;
 }

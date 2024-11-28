@@ -1,13 +1,16 @@
 :root {
-  --body-color: #282828;
-  --text-color: whitesmoke;
+  --body-color: linear-gradient(to top right, #f7dd72, #cd956d);
+  --text-color: black;
+  --button-text-color: #f7dd72;
 }
 
 body {
   font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  background-color: var(--body-color);
+  background: var(--body-color) fixed;
   color: var(--text-color);
 
   margin: 0 auto;
   width: 90%;
+
+  user-select: none;
 }

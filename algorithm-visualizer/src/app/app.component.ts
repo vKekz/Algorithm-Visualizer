@@ -3,11 +3,12 @@ import { AlgorithmSelectorComponent } from "./components/algorithm-selector/algo
 import { VisualizerComponent } from "./components/visualizer/visualizer.component";
 import { AlgorithmOptionsComponent } from "./components/algorithm-options/algorithm-options.component";
 import { AlgorithmService } from "../services/algorithm.service";
+import { ThemeToggleComponent } from "./components/theme-toggle/theme-toggle.component";
 
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [AlgorithmSelectorComponent, VisualizerComponent, AlgorithmOptionsComponent],
+  imports: [AlgorithmSelectorComponent, VisualizerComponent, AlgorithmOptionsComponent, ThemeToggleComponent],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.css",
 })
