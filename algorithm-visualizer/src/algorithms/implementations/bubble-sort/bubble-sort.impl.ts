@@ -22,16 +22,24 @@ export class BubbleSort implements Algorithm {
         first.inComparison = true;
         compare.inComparison = true;
 
+        this.visualizerService.incrementCompare();
+        
+
         if (compare.value <= first.value) {
           data[i] = data[i + 1];
           data[i + 1] = first;
+          this.visualizerService.incrementSwap();
         }
+
+        
 
         await startDelay(delay);
 
+        
         first.inComparison = false;
         compare.inComparison = false;
       }
+      
       length--;
     }
   }

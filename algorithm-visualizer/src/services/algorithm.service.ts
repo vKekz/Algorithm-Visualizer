@@ -42,6 +42,9 @@ export class AlgorithmService {
       return;
     }
 
+//reset counter
+    this.visualizerService.reset();
+
     await this.currentAlgorithm?.sort(this.visualizerService.rawSortingData, this.optionsService.delay);
     console.log("finished");
   }
