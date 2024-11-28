@@ -1,0 +1,9 @@
+select {
+  font-size: 1rem;
+  background-color: var(--text-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
