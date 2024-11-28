@@ -26,6 +26,7 @@ export class ShellSort implements Algorithm {
         let j;
         for (j = i; j >= gap && data[j - gap].value > temp.value; j -= gap) {
           data[j] = data[j - gap];
+          this.visualizerService.incrementSwap();
         }
 
         data[j] = temp;

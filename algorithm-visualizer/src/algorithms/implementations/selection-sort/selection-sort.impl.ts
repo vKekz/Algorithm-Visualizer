@@ -42,8 +42,13 @@ export class SelectionSort implements Algorithm {
       const temp = data[i];
       data[i] = data[minIndex];
       data[minIndex] = temp;
+      
 
       i++;
+
+      this.visualizerService.incrementSwap();
+
+      
     }
   }
 }

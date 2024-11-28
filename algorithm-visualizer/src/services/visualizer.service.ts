@@ -24,6 +24,7 @@ export class VisualizerService {
   }
   public accessCount: number = 0;
   public compareCount: number = 0;
+  public swapCount: number = 0;
 
   
 
@@ -31,8 +32,13 @@ export class VisualizerService {
     this.compareCount++;
   }
 
+  incrementSwap() {
+    this.swapCount++;
+  }
+
   reset() {
     this.accessCount = 0;
     this.compareCount = 0;
+    this.swapCount = 0; 
   }
 }

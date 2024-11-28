@@ -27,6 +27,8 @@ export class InsertionSort implements Algorithm {
         data[j] = data[j - 1];
         data[j - 1] = element;
 
+        this.visualizerService.incrementSwap();
+
         j -= 1;
 
         await startDelay(delay);

@@ -57,8 +57,12 @@ export class QuickSort implements Algorithm {
       data[left] = data[right];
       data[right] = temp;
 
+      this.visualizerService.incrementSwap();
+
       data[left].inComparison = false;
       data[right].inComparison = false;
+
+      
     }
   }
 }
