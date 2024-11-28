@@ -1,7 +1,10 @@
 .options-container {
-  height: 50px;
+  height: 100px;
+  width: 90%;
+  margin: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  border-bottom: 2px solid var(--text-color);
 }

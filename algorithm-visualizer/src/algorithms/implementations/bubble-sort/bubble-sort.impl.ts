@@ -2,11 +2,12 @@
 import { RawData } from "../../../interfaces/raw-data";
 import { Algorithm } from "../../algorithm";
 import { startDelay } from "../../../helpers/delay.helper";
+import { VisualizerService } from "../../../services/visualizer.service";
 
 export class BubbleSort implements Algorithm {
   public type: AlgorithmType;
 
-  constructor() {
+  constructor(private readonly visualizerService: VisualizerService) {
     this.type = AlgorithmType.BubbleSort;
   }
 
@@ -21,9 +22,12 @@ export class BubbleSort implements Algorithm {
         first.inComparison = true;
         compare.inComparison = true;
 
+        this.visualizerService.incrementCompare();
+
         if (compare.value <= first.value) {
           data[i] = data[i + 1];
           data[i + 1] = first;
+          this.visualizerService.incrementSwap();
         }
 
         await startDelay(delay);
@@ -31,6 +35,7 @@ export class BubbleSort implements Algorithm {
         first.inComparison = false;
         compare.inComparison = false;
       }
+
       length--;
     }
   }

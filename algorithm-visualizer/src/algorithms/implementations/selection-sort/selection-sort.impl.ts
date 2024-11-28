@@ -2,11 +2,12 @@
 import { Algorithm } from "../../algorithm";
 import { AlgorithmType } from "../../enums/algorithm-type.enum";
 import { startDelay } from "../../../helpers/delay.helper";
+import { VisualizerService } from "../../../services/visualizer.service";
 
 export class SelectionSort implements Algorithm {
   public type: AlgorithmType;
 
-  constructor() {
+  constructor(private readonly visualizerService: VisualizerService) {
     this.type = AlgorithmType.SelectionSort;
   }
 
@@ -24,6 +25,7 @@ export class SelectionSort implements Algorithm {
 
         first.inComparison = true;
         compare.inComparison = true;
+        this.visualizerService.incrementCompare();
 
         if (compare.value < first.value) {
           minIndex = j;
@@ -42,6 +44,7 @@ export class SelectionSort implements Algorithm {
       data[minIndex] = temp;
 
       i++;
+      this.visualizerService.incrementSwap();
     }
   }
 }

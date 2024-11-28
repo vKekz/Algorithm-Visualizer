@@ -2,11 +2,12 @@ import { RawData } from "../../../interfaces/raw-data";
 import { Algorithm } from "../../algorithm";
 import { AlgorithmType } from "../../enums/algorithm-type.enum";
 import { startDelay } from "../../../helpers/delay.helper";
+import { VisualizerService } from "../../../services/visualizer.service";
 
 export class InsertionSort implements Algorithm {
   public type: AlgorithmType;
 
-  constructor() {
+  constructor(private readonly visualizerService: VisualizerService) {
     this.type = AlgorithmType.InsertionSort;
   }
 
@@ -18,6 +19,7 @@ export class InsertionSort implements Algorithm {
       const element = data[i];
 
       element.inComparison = true;
+      this.visualizerService.incrementCompare();
 
       // comparison
       while (j > 0 && element.value < data[j - 1].value) {
@@ -25,13 +27,14 @@ export class InsertionSort implements Algorithm {
         data[j] = data[j - 1];
         data[j - 1] = element;
 
+        this.visualizerService.incrementSwap();
+
         j -= 1;
 
         await startDelay(delay);
       }
 
       element.inComparison = false;
-
       data[j] = element;
     }
   }

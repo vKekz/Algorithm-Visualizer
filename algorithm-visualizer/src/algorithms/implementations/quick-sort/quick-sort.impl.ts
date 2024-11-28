@@ -2,11 +2,12 @@
 import { Algorithm } from "../../algorithm";
 import { AlgorithmType } from "../../enums/algorithm-type.enum";
 import { startDelay } from "../../../helpers/delay.helper";
+import { VisualizerService } from "../../../services/visualizer.service";
 
 export class QuickSort implements Algorithm {
   public type: AlgorithmType;
 
-  constructor() {
+  constructor(private readonly visualizerService: VisualizerService) {
     this.type = AlgorithmType.QuickSort;
   }
 
@@ -41,6 +42,7 @@ export class QuickSort implements Algorithm {
 
       data[left].inComparison = true;
       data[right].inComparison = true;
+      this.visualizerService.incrementCompare();
 
       await startDelay(delay);
 
@@ -54,6 +56,8 @@ export class QuickSort implements Algorithm {
       const temp = data[left];
       data[left] = data[right];
       data[right] = temp;
+
+      this.visualizerService.incrementSwap();
 
       data[left].inComparison = false;
       data[right].inComparison = false;

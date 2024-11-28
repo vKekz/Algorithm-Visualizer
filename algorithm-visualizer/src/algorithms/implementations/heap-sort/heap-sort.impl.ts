@@ -2,11 +2,12 @@ import { RawData } from "../../../interfaces/raw-data";
 import { Algorithm } from "../../algorithm";
 import { AlgorithmType } from "../../enums/algorithm-type.enum";
 import { startDelay } from "../../../helpers/delay.helper";
+import { VisualizerService } from "../../../services/visualizer.service";
 
 export class HeapSort implements Algorithm {
   public type: AlgorithmType;
 
-  constructor() {
+  constructor(private readonly visualizerService: VisualizerService) {
     this.type = AlgorithmType.HeapSort;
   }
 
@@ -26,6 +27,7 @@ export class HeapSort implements Algorithm {
       const temp = data[end];
       data[end] = data[0];
       data[0] = temp;
+      this.visualizerService.incrementSwap();
 
       await this.siftDown(data, delay, 0, end);
     }
@@ -49,6 +51,7 @@ export class HeapSort implements Algorithm {
       }
 
       data[root].inComparison = true;
+      this.visualizerService.incrementCompare();
 
       await startDelay(delay);
 
@@ -64,6 +67,8 @@ export class HeapSort implements Algorithm {
       data[leftChildIndex] = temp;
 
       root = leftChildIndex;
+
+      this.visualizerService.incrementSwap();
     }
   }
 }

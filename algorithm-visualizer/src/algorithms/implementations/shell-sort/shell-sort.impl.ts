@@ -2,11 +2,12 @@
 import { Algorithm } from "../../algorithm";
 import { AlgorithmType } from "../../enums/algorithm-type.enum";
 import { startDelay } from "../../../helpers/delay.helper";
+import { VisualizerService } from "../../../services/visualizer.service";
 
 export class ShellSort implements Algorithm {
   public type: AlgorithmType;
 
-  constructor() {
+  constructor(private readonly visualizerService: VisualizerService) {
     this.type = AlgorithmType.ShellSort;
   }
 
@@ -25,10 +26,12 @@ export class ShellSort implements Algorithm {
         let j;
         for (j = i; j >= gap && data[j - gap].value > temp.value; j -= gap) {
           data[j] = data[j - gap];
+          this.visualizerService.incrementSwap();
         }
 
         data[j] = temp;
         data[j].inComparison = true;
+        this.visualizerService.incrementCompare();
 
         await startDelay(delay);
 
