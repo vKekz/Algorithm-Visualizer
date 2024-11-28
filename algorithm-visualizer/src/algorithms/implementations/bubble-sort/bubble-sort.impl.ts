@@ -23,7 +23,6 @@ export class BubbleSort implements Algorithm {
         compare.inComparison = true;
 
         this.visualizerService.incrementCompare();
-        
 
         if (compare.value <= first.value) {
           data[i] = data[i + 1];
@@ -31,15 +30,12 @@ export class BubbleSort implements Algorithm {
           this.visualizerService.incrementSwap();
         }
 
-        
-
         await startDelay(delay);
 
-        
         first.inComparison = false;
         compare.inComparison = false;
       }
-      
+
       length--;
     }
   }

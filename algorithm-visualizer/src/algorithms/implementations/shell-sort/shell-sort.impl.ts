@@ -32,7 +32,7 @@ export class ShellSort implements Algorithm {
         data[j] = temp;
         data[j].inComparison = true;
         this.visualizerService.incrementCompare();
-        
+
         await startDelay(delay);
 
         data[j].inComparison = false;

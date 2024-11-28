@@ -20,7 +20,7 @@ export class InsertionSort implements Algorithm {
 
       element.inComparison = true;
       this.visualizerService.incrementCompare();
-      
+
       // comparison
       while (j > 0 && element.value < data[j - 1].value) {
         // the swap
@@ -35,7 +35,6 @@ export class InsertionSort implements Algorithm {
       }
 
       element.inComparison = false;
-
       data[j] = element;
     }
   }

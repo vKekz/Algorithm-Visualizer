@@ -1,8 +1,24 @@
-.counter {
-    margin: 10px 0;
-    font-size: 18px;
-  }
-  
-  .counter span {
-    font-weight: bold;
-  }
+.container {
+  color: whitesmoke;
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.25rem;
+  margin-left: 5px;
+}
+
+hr {
+  border-color: var(--text-color);
+}
+
+span {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-left: 0.5rem;
+}
+
+i {
+  padding: 5px;
+  border-radius: 50%;
+  background-color: var(--text-color);
+  color: var(--button-text-color);
+}

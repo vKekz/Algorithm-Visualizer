@@ -3,8 +3,6 @@ import { AlgorithmDataInputComponent } from "../algorithm-data-input/algorithm-d
 import { AlgorithmSelectorComponent } from "../algorithm-selector/algorithm-selector.component";
 import { AlgorithmDelaySliderComponent } from "../algorithm-delay-slider/algorithm-delay-slider.component";
 import { AlgorithmElementsSliderComponent } from "../algorithm-elements-slider/algorithm-elements-slider.component";
-import { AlgorithmCounterComponent } from "../algorithm-counter/algorithm-counter.component";
-
 
 @Component({
   selector: "app-algorithm-options",
@@ -14,8 +12,7 @@ import { AlgorithmCounterComponent } from "../algorithm-counter/algorithm-counte
     AlgorithmSelectorComponent,
     AlgorithmDelaySliderComponent,
     AlgorithmElementsSliderComponent,
-    AlgorithmCounterComponent
-],
+  ],
   templateUrl: "./algorithm-options.component.html",
   styleUrl: "./algorithm-options.component.css",
 })

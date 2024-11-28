@@ -1,15 +1,17 @@
 ﻿import { Injectable } from "@angular/core";
 import { RawData } from "../interfaces/raw-data";
-
+import { AlgorithmData } from "../interfaces/algorithm-data";
 
 @Injectable({
   providedIn: "root",
 })
 export class VisualizerService {
   public rawSortingData: RawData[];
+  public readonly algorithmData: AlgorithmData;
 
   constructor() {
     this.rawSortingData = [];
+    this.algorithmData = { comparisons: 0, swaps: 0 };
   }
 
   public generateRawSortingData(amountOfElements: number) {
@@ -22,23 +24,17 @@ export class VisualizerService {
       this.rawSortingData.push(data);
     }
   }
-  public accessCount: number = 0;
-  public compareCount: number = 0;
-  public swapCount: number = 0;
-
-  
 
   incrementCompare() {
-    this.compareCount++;
+    this.algorithmData.comparisons++;
   }
 
   incrementSwap() {
-    this.swapCount++;
+    this.algorithmData.swaps++;
   }
 
   reset() {
-    this.accessCount = 0;
-    this.compareCount = 0;
-    this.swapCount = 0; 
+    this.algorithmData.comparisons = 0;
+    this.algorithmData.swaps = 0;
   }
 }

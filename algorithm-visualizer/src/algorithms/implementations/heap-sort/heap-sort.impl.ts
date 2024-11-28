@@ -52,7 +52,6 @@ export class HeapSort implements Algorithm {
 
       data[root].inComparison = true;
       this.visualizerService.incrementCompare();
-      
 
       await startDelay(delay);
 
@@ -66,9 +65,10 @@ export class HeapSort implements Algorithm {
       const temp = data[root];
       data[root] = data[leftChildIndex];
       data[leftChildIndex] = temp;
-      this.visualizerService.incrementSwap();
 
       root = leftChildIndex;
+
+      this.visualizerService.incrementSwap();
     }
   }
 }
