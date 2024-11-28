@@ -7,6 +7,12 @@
   text-align: center;
 }
 
+.head-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .container {
   height: calc(100vh - 50px * 2); /* (could be better) subtract the title height */
   display: flex;
@@ -15,10 +21,4 @@
 
 .margin-top {
   margin-top: auto;
-}
-
-.headcontainer {
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
 }

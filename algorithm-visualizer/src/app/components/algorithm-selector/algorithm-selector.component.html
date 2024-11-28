@@ -1,7 +1,7 @@
-<select (change)="this.handleAlgorithmSelection($event)" class="algoselector">
+<select (change)="this.handleAlgorithmSelection($event)">
   <option [ngValue]="null" selected hidden>Select algorithm</option>
 
   @for (algorithm of algorithmHandler.getAlgorithms(); track algorithm; let index = $index) {
-    <option [value]="index" class="listofalgorithms">{{ algorithm.type }}</option>
+    <option [value]="index">{{ algorithm.type }}</option>
   }
 </select>

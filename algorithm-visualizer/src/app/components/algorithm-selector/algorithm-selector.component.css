@@ -1,15 +1,9 @@
-.algoselector{
-    border: none;
-    border-radius: 10px;
-    padding: 2px;
-    /* background-color: rgb(57, 138, 54); */
-    background-color: var(--text-color);
-    cursor: pointer;
-    color: var(--button-text-color);
-}
-.algoselector:focus{
-    outline: none;
-}
-.listofalgorithms{
-    cursor: pointer;
+select {
+  font-size: 1rem;
+  background-color: var(--text-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
 }
