@@ -1,4 +1,4 @@
-﻿import { Injectable } from "@angular/core";
+﻿import { Injectable, signal, WritableSignal } from "@angular/core";
 import { RawData } from "../interfaces/raw-data";
 import { AlgorithmData } from "../interfaces/algorithm-data";
 import { State } from "../enums/state.enum";
@@ -9,12 +9,11 @@ import { State } from "../enums/state.enum";
 export class VisualizerService {
   public readonly algorithmData: AlgorithmData;
   public rawSortingData: RawData[];
-  public state: State;
+  public state: WritableSignal<State> = signal(State.Stopped);
 
   constructor() {
-    this.rawSortingData = [];
     this.algorithmData = { comparisons: 0, swaps: 0 };
-    this.state = State.Stopped;
+    this.rawSortingData = [];
   }
 
   public generateRawSortingData(amountOfElements: number) {
@@ -27,19 +26,35 @@ export class VisualizerService {
       };
       this.rawSortingData.push(data);
     }
-    this.state = State.Stopped;
+
+    this.reset();
+
+    console.log(this.state);
   }
 
-  incrementCompare() {
+  public incrementCompare() {
     this.algorithmData.comparisons++;
   }
 
-  incrementSwap() {
+  public incrementSwap() {
     this.algorithmData.swaps++;
   }
 
-  reset() {
+  public reset() {
+    this.state.set(State.Stopped);
     this.algorithmData.comparisons = 0;
     this.algorithmData.swaps = 0;
+  }
+
+  public isStopped() {
+    return this.state() === State.Stopped;
+  }
+
+  public isPaused() {
+    return this.state() === State.Paused;
+  }
+
+  public isRunning() {
+    return this.state() === State.Running;
   }
 }

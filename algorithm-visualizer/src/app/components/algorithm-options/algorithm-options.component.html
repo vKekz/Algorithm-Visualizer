@@ -3,15 +3,14 @@
     <app-algorithm-selector></app-algorithm-selector>
   </div>
   <div>
-    <app-algorithm-toggle></app-algorithm-toggle>
-  </div>
-  <div>
     <app-algorithm-elements-slider></app-algorithm-elements-slider>
   </div>
   <div>
     <app-algorithm-delay-slider></app-algorithm-delay-slider>
   </div>
-  <div>
-    <app-algorithm-data-input></app-algorithm-data-input>
-  </div>
+  @if (this.algorithmService.currentAlgorithm) {
+    <div>
+      <app-visualizer-toggle></app-visualizer-toggle>
+    </div>
+  }
 </div>

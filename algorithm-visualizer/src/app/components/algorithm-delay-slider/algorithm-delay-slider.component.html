@@ -1,8 +1,8 @@
 <div class="delay-container">
   <label class="label" for="delay">Delay: {{ this.optionsService.delay }}ms</label>
-  <!--  TODO: Disable if running -->
   <input
     (change)="this.handleDelayInput($event)"
+    [disabled]="!this.visualizerService.isStopped()"
     [min]="MIN_DELAY"
     [max]="MAX_DELAY"
     [value]="this.optionsService.delay"

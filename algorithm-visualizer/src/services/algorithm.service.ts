@@ -38,7 +38,7 @@ export class AlgorithmService {
   }
 
   public async startSorting() {
-    if (this.visualizerService.state !== State.Stopped) {
+    if (!this.visualizerService.isStopped()) {
       return;
     }
 
@@ -47,11 +47,10 @@ export class AlgorithmService {
       return;
     }
 
-    this.visualizerService.reset();
-    this.visualizerService.state = State.Running;
+    this.visualizerService.state.set(State.Running);
     await algorithm.sort(this.visualizerService.rawSortingData, this.optionsService.delay);
-    this.visualizerService.state = State.Stopped;
-    console.log(this.visualizerService.state);
+    this.visualizerService.state.set(State.Stopped);
+    console.log("test");
   }
 
   public selectAlgorithm(index: number): void {

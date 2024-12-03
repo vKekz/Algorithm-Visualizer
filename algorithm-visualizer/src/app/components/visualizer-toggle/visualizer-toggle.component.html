@@ -1,0 +1,3 @@
+<button (click)="this.handleToggle()" [disabled]="!this.algorithmService.currentAlgorithm">
+  {{ this.visualizerService.isRunning() ? "Stop" : "Start" }}
+</button>

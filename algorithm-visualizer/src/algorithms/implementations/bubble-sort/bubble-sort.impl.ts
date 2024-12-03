@@ -3,7 +3,6 @@ import { RawData } from "../../../interfaces/raw-data";
 import { Algorithm } from "../../algorithm";
 import { startDelay } from "../../../helpers/delay.helper";
 import { VisualizerService } from "../../../services/visualizer.service";
-import { State } from "../../../enums/state.enum";
 
 export class BubbleSort implements Algorithm {
   public type: AlgorithmType;
@@ -25,18 +24,19 @@ export class BubbleSort implements Algorithm {
 
         this.visualizerService.incrementCompare();
 
+        while (this.visualizerService.isPaused()) {
+          await startDelay(1);
+        }
+        if (this.visualizerService.isStopped()) {
+          break;
+        }
+
         if (compare.value <= first.value) {
           data[i] = data[i + 1];
           data[i + 1] = first;
           this.visualizerService.incrementSwap();
         }
 
-        while (this.visualizerService.state === State.Paused) {
-          await startDelay(1);
-        }
-        if (this.visualizerService.state == State.Stopped) {
-          break;
-        }
         await startDelay(delay);
 
         first.inComparison = false;
