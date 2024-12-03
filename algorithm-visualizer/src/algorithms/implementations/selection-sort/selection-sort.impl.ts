@@ -26,6 +26,7 @@ export class SelectionSort implements Algorithm {
 
         first.inComparison = true;
         compare.inComparison = true;
+        this.visualizerService.incrementCompare();
 
         if (compare.value < first.value) {
           minIndex = j;
@@ -50,6 +51,7 @@ export class SelectionSort implements Algorithm {
       data[minIndex] = temp;
 
       i++;
+      this.visualizerService.incrementSwap();
     }
   }
 }

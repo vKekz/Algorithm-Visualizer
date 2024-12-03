@@ -50,6 +50,7 @@ export class QuickSort implements Algorithm {
 
       data[left].inComparison = true;
       data[right].inComparison = true;
+      this.visualizerService.incrementCompare();
 
       await startDelay(delay);
 
@@ -63,6 +64,8 @@ export class QuickSort implements Algorithm {
       const temp = data[left];
       data[left] = data[right];
       data[right] = temp;
+
+      this.visualizerService.incrementSwap();
 
       data[left].inComparison = false;
       data[right].inComparison = false;

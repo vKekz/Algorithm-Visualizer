@@ -31,6 +31,7 @@ export class MergeSort implements Algorithm {
     let k = mid;
 
     for (let i = start, r = 0; i < mid; r++, i++) {
+      this.visualizerService.incrementCompare();
       while (k < end && data[k].value < data[i].value) {
         cache[r] = data[k];
         r++;
@@ -49,6 +50,7 @@ export class MergeSort implements Algorithm {
         break;
       }
       await startDelay(delay);
+      this.visualizerService.incrementSwap();
     }
   }
 

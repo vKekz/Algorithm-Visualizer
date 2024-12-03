@@ -1,0 +1,12 @@
+@if (this.algorithmService.currentAlgorithm) {
+  <div class="container">
+    <div>
+      <i class="bi bi-123"></i>
+      <span>Comparisons: {{ this.visualizerService.algorithmData.comparisons }}</span>
+    </div>
+    <div>
+      <i class="bi bi-arrow-left-right"></i>
+      <span>Swaps: {{ this.visualizerService.algorithmData.swaps }}</span>
+    </div>
+  </div>
+}

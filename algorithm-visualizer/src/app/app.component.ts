@@ -3,11 +3,19 @@ import { AlgorithmSelectorComponent } from "./components/algorithm-selector/algo
 import { VisualizerComponent } from "./components/visualizer/visualizer.component";
 import { AlgorithmOptionsComponent } from "./components/algorithm-options/algorithm-options.component";
 import { AlgorithmService } from "../services/algorithm.service";
+import { ThemeToggleComponent } from "./components/theme-toggle/theme-toggle.component";
+import { AlgorithmCounterComponent } from './components/algorithm-counter/algorithm-counter.component';
 
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [AlgorithmSelectorComponent, VisualizerComponent, AlgorithmOptionsComponent],
+  imports: [
+    AlgorithmSelectorComponent,
+    VisualizerComponent,
+    AlgorithmOptionsComponent,
+    ThemeToggleComponent,
+    AlgorithmCounterComponent,
+  ],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.css",
 })

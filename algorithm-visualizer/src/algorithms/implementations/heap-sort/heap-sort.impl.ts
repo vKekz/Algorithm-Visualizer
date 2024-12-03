@@ -28,6 +28,7 @@ export class HeapSort implements Algorithm {
       const temp = data[end];
       data[end] = data[0];
       data[0] = temp;
+      this.visualizerService.incrementSwap();
 
       await this.siftDown(data, delay, 0, end);
     }
@@ -51,6 +52,7 @@ export class HeapSort implements Algorithm {
       }
 
       data[root].inComparison = true;
+      this.visualizerService.incrementCompare();
 
       while (this.visualizerService.state === State.Paused) {
         await startDelay(1);
@@ -72,6 +74,8 @@ export class HeapSort implements Algorithm {
       data[leftChildIndex] = temp;
 
       root = leftChildIndex;
+
+      this.visualizerService.incrementSwap();
     }
   }
 }
