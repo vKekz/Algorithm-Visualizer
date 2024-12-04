@@ -4,6 +4,7 @@ import { AlgorithmDelaySliderComponent } from "../algorithm-delay-slider/algorit
 import { AlgorithmElementsSliderComponent } from "../algorithm-elements-slider/algorithm-elements-slider.component";
 import { VisualizerToggleComponent } from "../visualizer-toggle/visualizer-toggle.component";
 import { AlgorithmService } from "../../../services/algorithm.service";
+import { AlgorithmTooltipComponent } from '../algorithm-tooltip/algorithm-tooltip.component';
 
 @Component({
   selector: "app-algorithm-options",
@@ -13,6 +14,7 @@ import { AlgorithmService } from "../../../services/algorithm.service";
     AlgorithmDelaySliderComponent,
     AlgorithmElementsSliderComponent,
     VisualizerToggleComponent,
+    AlgorithmTooltipComponent,
   ],
   templateUrl: "./algorithm-options.component.html",
   styleUrl: "./algorithm-options.component.css",
