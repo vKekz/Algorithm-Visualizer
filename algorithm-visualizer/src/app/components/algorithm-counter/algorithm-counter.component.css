@@ -7,10 +7,6 @@
   margin-left: 5px;
 }
 
-hr {
-  border-color: var(--text-color);
-}
-
 span {
   font-size: 1.1rem;
   color: var(--text-color);

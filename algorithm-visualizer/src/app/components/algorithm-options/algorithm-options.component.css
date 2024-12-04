@@ -9,6 +9,12 @@
   border-bottom: 2px solid var(--text-color);
 }
 
+.middle {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .sub-container {
   display: flex;
   flex-direction: row;
