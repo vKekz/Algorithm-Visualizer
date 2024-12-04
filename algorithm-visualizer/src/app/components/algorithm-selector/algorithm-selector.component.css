@@ -7,3 +7,20 @@ select {
   padding: 5px;
   cursor: pointer;
 }
+.infobox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  cursor: help;
+}
+
+.tooltip:hover::after {
+  display: block;
+  position: absolute;
+  width: 350px;
+  border: 1px solid black;
+  content: attr(id);
+  background-color: var(--text-color);
+  color: var(--button-text-color);
+  padding: .25em;
+}
