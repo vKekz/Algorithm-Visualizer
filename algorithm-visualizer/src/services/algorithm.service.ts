@@ -47,8 +47,11 @@ export class AlgorithmService {
       return;
     }
 
+    this.visualizerService.reset();
     this.visualizerService.status = Status.Running;
+
     await algorithm.sort(this.visualizerService.rawSortingData, this.optionsService.delay);
+
     this.visualizerService.status = Status.Stopped;
   }
 

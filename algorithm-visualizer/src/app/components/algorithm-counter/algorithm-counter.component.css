@@ -1,8 +1,9 @@
 .container {
   color: whitesmoke;
   display: flex;
-  gap: 2rem;
-  margin-top: 1.25rem;
+  align-items: center;
+  gap: 1.75rem;
+  margin-top: 1rem;
   margin-left: 5px;
 }
 
