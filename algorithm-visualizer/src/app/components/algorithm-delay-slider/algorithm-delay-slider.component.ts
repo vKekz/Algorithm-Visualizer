@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { MAX_DELAY, MIN_DELAY } from "../../../constants/visualizer.constants";
 import { OptionsService } from "../../../services/options.service";
+import { VisualizerService } from "../../../services/visualizer.service";
 
 @Component({
   selector: "app-algorithm-delay-slider",
@@ -10,7 +11,10 @@ import { OptionsService } from "../../../services/options.service";
   styleUrl: "./algorithm-delay-slider.component.css",
 })
 export class AlgorithmDelaySliderComponent {
-  constructor(protected readonly optionsService: OptionsService) {}
+  constructor(
+    protected readonly optionsService: OptionsService,
+    protected readonly visualizerService: VisualizerService
+  ) {}
 
   public handleDelayInput(event: Event) {
     const target = event.target as HTMLInputElement;

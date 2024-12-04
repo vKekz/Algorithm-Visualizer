@@ -1,0 +1,3 @@
+<button (click)="this.handleToggle()" [disabled]="!this.algorithmService.currentAlgorithm">
+  <i class="bi bi-{{ this.visualizerService.isRunning() ? 'stop-fill' : 'play-fill' }}"></i>
+</button>

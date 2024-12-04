@@ -12,16 +12,15 @@ import { VisualizerService } from "../../../services/visualizer.service";
 })
 export class AlgorithmElementsSliderComponent {
   constructor(
-    private readonly visualizerService: VisualizerService,
+    protected readonly visualizerService: VisualizerService,
     protected readonly optionsService: OptionsService
   ) {}
 
   public handleElementsInput(event: Event) {
     const target = event.target as HTMLInputElement;
     const amountOfElements = target.valueAsNumber;
-    this.optionsService.amountOfElements = amountOfElements;
 
-    // TODO: Check if not running
+    this.optionsService.amountOfElements = amountOfElements;
     this.visualizerService.generateRawSortingData(amountOfElements);
   }
 

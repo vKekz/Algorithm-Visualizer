@@ -1,5 +1,8 @@
 <div class="options-container">
-  <div>
+  <div class="sub-container">
+    @if (this.algorithmService.currentAlgorithm) {
+      <app-visualizer-toggle></app-visualizer-toggle>
+    }
     <app-algorithm-selector></app-algorithm-selector>
   </div>
   <div>
@@ -7,8 +10,5 @@
   </div>
   <div>
     <app-algorithm-delay-slider></app-algorithm-delay-slider>
-  </div>
-  <div>
-    <app-algorithm-data-input></app-algorithm-data-input>
   </div>
 </div>
