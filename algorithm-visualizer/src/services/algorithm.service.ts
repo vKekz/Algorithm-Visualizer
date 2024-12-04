@@ -9,6 +9,7 @@ import { HeapSort } from "../algorithms/implementations/heap-sort/heap-sort.impl
 import { VisualizerService } from "./visualizer.service";
 import { OptionsService } from "./options.service";
 import { ShellSort } from "../algorithms/implementations/shell-sort/shell-sort.impl";
+import { Status } from "../enums/status.enum";
 
 @Injectable({
   providedIn: "root",
@@ -37,16 +38,21 @@ export class AlgorithmService {
   }
 
   public async startSorting() {
+    if (!this.visualizerService.isStopped()) {
+      return;
+    }
+
     const algorithm = this.currentAlgorithm;
     if (algorithm == null) {
       return;
     }
 
-//reset counter
     this.visualizerService.reset();
+    this.visualizerService.status = Status.Running;
 
-    await this.currentAlgorithm?.sort(this.visualizerService.rawSortingData, this.optionsService.delay);
-    console.log("finished");
+    await algorithm.sort(this.visualizerService.rawSortingData, this.optionsService.delay);
+
+    this.visualizerService.status = Status.Stopped;
   }
 
   public selectAlgorithm(index: number): void {

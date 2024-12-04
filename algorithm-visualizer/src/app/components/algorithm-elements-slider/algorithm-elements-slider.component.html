@@ -1,8 +1,8 @@
 <div class="elements-container">
   <label class="label" for="elements">Elements: {{ this.optionsService.amountOfElements }}</label>
-  <!--  TODO: Disable if running -->
   <input
     (change)="this.handleElementsInput($event)"
+    [disabled]="!this.visualizerService.isStopped()"
     [min]="MIN_ELEMENTS"
     [max]="MAX_ELEMENTS"
     [value]="this.optionsService.amountOfElements"

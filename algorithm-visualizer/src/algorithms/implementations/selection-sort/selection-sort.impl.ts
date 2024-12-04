@@ -27,10 +27,16 @@ export class SelectionSort implements Algorithm {
         compare.inComparison = true;
         this.visualizerService.incrementCompare();
 
+        while (this.visualizerService.isPaused()) {
+          await startDelay(1);
+        }
+        if (this.visualizerService.isStopped()) {
+          break;
+        }
+
         if (compare.value < first.value) {
           minIndex = j;
         }
-
         j++;
 
         await startDelay(delay);

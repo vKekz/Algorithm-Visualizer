@@ -1,7 +1,7 @@
-<select (change)="this.handleAlgorithmSelection($event)">
+<select (change)="this.handleAlgorithmSelection($event)" [disabled]="!this.visualizerService.isStopped()">
   <option [ngValue]="null" selected hidden>Select algorithm</option>
 
-  @for (algorithm of algorithmHandler.getAlgorithms(); track algorithm; let index = $index) {
+  @for (algorithm of algorithmService.getAlgorithms(); track algorithm; let index = $index) {
     <option [value]="index">{{ algorithm.type }}</option>
   }
 </select>
