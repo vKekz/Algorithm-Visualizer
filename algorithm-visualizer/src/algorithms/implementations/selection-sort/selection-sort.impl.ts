@@ -1,16 +1,17 @@
 ﻿import { RawData } from "../../../interfaces/raw-data";
 import { Algorithm } from "../../algorithm";
 import { AlgorithmType } from "../../enums/algorithm-type.enum";
-import { delay } from "../../../helpers/delay.helper";
+import { startDelay } from "../../../helpers/delay.helper";
+import { VisualizerService } from "../../../services/visualizer.service";
 
 export class SelectionSort implements Algorithm {
   public type: AlgorithmType;
 
-  constructor() {
+  constructor(private readonly visualizerService: VisualizerService) {
     this.type = AlgorithmType.SelectionSort;
   }
 
-  async sort(data: RawData[]): Promise<RawData[]> {
+  async sort(data: RawData[], delay: number) {
     let i = 0,
       length = data.length;
 
@@ -24,14 +25,21 @@ export class SelectionSort implements Algorithm {
 
         first.inComparison = true;
         compare.inComparison = true;
+        this.visualizerService.incrementCompare();
+
+        while (this.visualizerService.isPaused()) {
+          await startDelay(1);
+        }
+        if (this.visualizerService.isStopped()) {
+          break;
+        }
 
         if (compare.value < first.value) {
           minIndex = j;
         }
-
         j++;
 
-        await delay(1);
+        await startDelay(delay);
 
         first.inComparison = false;
         compare.inComparison = false;
@@ -42,8 +50,7 @@ export class SelectionSort implements Algorithm {
       data[minIndex] = temp;
 
       i++;
+      this.visualizerService.incrementSwap();
     }
-
-    return data;
   }
 }

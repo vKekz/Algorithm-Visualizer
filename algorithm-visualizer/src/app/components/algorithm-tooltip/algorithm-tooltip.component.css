@@ -1,0 +1,22 @@
+.infobox {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  cursor: help;
+}
+
+.infobox:hover {
+  .tooltip::after {
+    display: block;
+    position: absolute;
+    width: 350px;
+    border: 1px solid black;
+    border-radius: 5px;
+    content: attr(id);
+    background-color: var(--text-color);
+    color: var(--button-text-color);
+    padding: 0.25em;
+    z-index: 999;
+  }
+}

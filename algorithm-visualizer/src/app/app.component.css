@@ -7,6 +7,22 @@
   text-align: center;
 }
 
+.head-container {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.head-container > div {
+  display: table-cell;
+  width: 33%;
+  vertical-align: middle;
+}
+
+.head-container > div:last-child {
+  text-align: right;
+}
+
 .container {
   height: calc(100vh - 50px * 2); /* (could be better) subtract the title height */
   display: flex;

@@ -1,0 +1,30 @@
+select {
+  font-size: 1rem;
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+select:not(:disabled) {
+  background-color: var(--text-color);
+}
+
+.infobox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  cursor: help;
+}
+
+.tooltip:hover::after {
+  display: block;
+  position: absolute;
+  width: 350px;
+  border: 1px solid black;
+  content: attr(id);
+  background-color: var(--text-color);
+  color: var(--button-text-color);
+  padding: .25em;
+}

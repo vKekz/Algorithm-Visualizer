@@ -1,0 +1,21 @@
+.container {
+  color: whitesmoke;
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  margin-top: 1rem;
+  margin-left: 5px;
+}
+
+span {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-left: 0.5rem;
+}
+
+i {
+  padding: 5px;
+  border-radius: 50%;
+  background-color: var(--text-color);
+  color: var(--button-text-color);
+}

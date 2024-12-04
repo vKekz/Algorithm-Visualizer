@@ -1,11 +1,17 @@
 <div class="options-container">
-  <div>
+  <div class="sub-container">
+    @if (this.algorithmService.currentAlgorithm) {
+      <app-visualizer-toggle></app-visualizer-toggle>
+    }
     <app-algorithm-selector></app-algorithm-selector>
+    @if (this.algorithmService.currentAlgorithm) {
+      <app-algorithm-tooltip></app-algorithm-tooltip>
+    }
+  </div>
+  <div class="middle">
+    <app-algorithm-elements-slider></app-algorithm-elements-slider>
   </div>
   <div>
-    <app-algorithm-data-input></app-algorithm-data-input>
+    <app-algorithm-delay-slider></app-algorithm-delay-slider>
   </div>
-  <!--  <div>-->
-  <!--    <app-algorithm-speed-input></app-algorithm-speed-input>-->
-  <!--  </div>-->
 </div>

@@ -1,5 +1,14 @@
-<h1 class="title">Algorithm visualizer</h1>
+<div class="head-container">
+  <div></div>
+  <div>
+    <h1 class="title">{{ this.getTitle() }}</h1>
+  </div>
+  <div>
+    <app-theme-toggle></app-theme-toggle>
+  </div>
+</div>
 <div class="container">
   <app-algorithm-options></app-algorithm-options>
   <app-visualizer class="margin-top"></app-visualizer>
+  <app-algorithm-counter></app-algorithm-counter>
 </div>

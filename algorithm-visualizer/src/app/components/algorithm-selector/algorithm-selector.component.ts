@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
-import { AlgorithmHandler } from "../../../services/algorithm.handler";
+import { AlgorithmService } from "../../../services/algorithm.service";
 import { FormsModule } from "@angular/forms";
+import { VisualizerService } from "../../../services/visualizer.service";
 
 @Component({
   selector: "app-algorithm-selector",
@@ -10,12 +11,15 @@ import { FormsModule } from "@angular/forms";
   styleUrl: "./algorithm-selector.component.css",
 })
 export class AlgorithmSelectorComponent {
-  constructor(protected readonly algorithmHandler: AlgorithmHandler) {}
+  constructor(
+    protected readonly algorithmService: AlgorithmService,
+    protected readonly visualizerService: VisualizerService
+  ) {}
 
   public handleAlgorithmSelection(event: Event): void {
     const target = event.target as HTMLSelectElement;
     const index = Number.parseInt(target.value);
 
-    this.algorithmHandler.selectAlgorithm(index);
+    this.algorithmService.selectAlgorithm(index);
   }
 }

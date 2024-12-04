@@ -1,5 +1,5 @@
 <div class="visualizer-container">
-  @for (data of this.algorithmHandler.rawDataList; track data.index) {
+  @for (data of this.visualizerService.rawSortingData; track data.index) {
     <div
       [ngClass]="this.getStyleClasses(data)"
       [ngStyle]="{ height: data.value * 50 + 'vh' }"
