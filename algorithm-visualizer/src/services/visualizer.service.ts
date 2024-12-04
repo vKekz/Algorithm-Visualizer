@@ -1,7 +1,10 @@
-﻿import { Injectable, signal, WritableSignal } from "@angular/core";
+﻿import { Injectable } from "@angular/core";
 import { RawData } from "../interfaces/raw-data";
 import { AlgorithmData } from "../interfaces/algorithm-data";
-import { State } from "../enums/state.enum";
+import { Status } from "../enums/state.enum";
+import { toSignalSync } from "../helpers/toSignalSync";
+import { Store } from "@ngxs/store";
+import { VisualizerState } from "../state/visualizer.state";
 
 @Injectable({
   providedIn: "root",
@@ -9,9 +12,10 @@ import { State } from "../enums/state.enum";
 export class VisualizerService {
   public readonly algorithmData: AlgorithmData;
   public rawSortingData: RawData[];
-  public state: WritableSignal<State> = signal(State.Stopped);
+  // @ts-ignore
+  public state = toSignalSync(this.store.select(VisualizerState.getStatus));
 
-  constructor() {
+  constructor(private readonly store: Store) {
     this.algorithmData = { comparisons: 0, swaps: 0 };
     this.rawSortingData = [];
   }
@@ -28,8 +32,6 @@ export class VisualizerService {
     }
 
     this.reset();
-
-    console.log(this.state);
   }
 
   public incrementCompare() {
@@ -41,20 +43,19 @@ export class VisualizerService {
   }
 
   public reset() {
-    this.state.set(State.Stopped);
     this.algorithmData.comparisons = 0;
     this.algorithmData.swaps = 0;
   }
 
   public isStopped() {
-    return this.state() === State.Stopped;
+    return this.state() === Status.Stopped;
   }
 
   public isPaused() {
-    return this.state() === State.Paused;
+    return this.state() === Status.Paused;
   }
 
   public isRunning() {
-    return this.state() === State.Running;
+    return this.state() === Status.Running;
   }
 }

@@ -1,4 +1,4 @@
-﻿import { Injectable } from "@angular/core";
+﻿import { ChangeDetectorRef, Injectable } from "@angular/core";
 import { Algorithm } from "../algorithms/algorithm";
 import { BubbleSort } from "../algorithms/implementations/bubble-sort/bubble-sort.impl";
 import { SelectionSort } from "../algorithms/implementations/selection-sort/selection-sort.impl";
@@ -9,7 +9,9 @@ import { HeapSort } from "../algorithms/implementations/heap-sort/heap-sort.impl
 import { VisualizerService } from "./visualizer.service";
 import { OptionsService } from "./options.service";
 import { ShellSort } from "../algorithms/implementations/shell-sort/shell-sort.impl";
-import { State } from "../enums/state.enum";
+import { Status } from "../enums/state.enum";
+import { Store } from "@ngxs/store";
+import { UpdateStatus } from "../state/visualizer.actions";
 
 @Injectable({
   providedIn: "root",
@@ -21,7 +23,8 @@ export class AlgorithmService {
 
   constructor(
     private readonly visualizerService: VisualizerService,
-    private readonly optionsService: OptionsService
+    private readonly optionsService: OptionsService,
+    private readonly store: Store
   ) {
     this.algorithmList = [];
 
@@ -47,10 +50,9 @@ export class AlgorithmService {
       return;
     }
 
-    this.visualizerService.state.set(State.Running);
+    this.store.dispatch(new UpdateStatus(Status.Running));
     await algorithm.sort(this.visualizerService.rawSortingData, this.optionsService.delay);
-    this.visualizerService.state.set(State.Stopped);
-    console.log("test");
+    this.store.dispatch(new UpdateStatus(Status.Stopped));
   }
 
   public selectAlgorithm(index: number): void {

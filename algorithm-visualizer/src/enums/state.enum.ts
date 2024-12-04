@@ -1,5 +1,5 @@
-﻿export enum State {
-  Stopped = "Stopped",
-  Paused = "Paused",
-  Running = "Running",
+﻿export enum Status {
+  Stopped,
+  Paused,
+  Running,
 }
