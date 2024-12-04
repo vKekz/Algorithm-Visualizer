@@ -27,8 +27,6 @@ export class VisualizerService {
       };
       this.rawSortingData.push(data);
     }
-
-    this.reset();
   }
 
   public incrementCompare() {
