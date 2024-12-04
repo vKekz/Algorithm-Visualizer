@@ -1,10 +1,8 @@
 import { Component, OnDestroy } from "@angular/core";
 import { VisualizerService } from "../../../services/visualizer.service";
 import { AlgorithmService } from "../../../services/algorithm.service";
-import { Status } from "../../../enums/state.enum";
+import { Status } from "../../../enums/status.enum";
 import { fromEvent, Subscription } from "rxjs";
-import { Store } from "@ngxs/store";
-import { UpdateStatus } from "../../../state/visualizer.actions";
 
 @Component({
   selector: "app-visualizer-toggle",
@@ -19,8 +17,7 @@ export class VisualizerToggleComponent implements OnDestroy {
 
   constructor(
     protected readonly algorithmService: AlgorithmService,
-    protected readonly visualizerService: VisualizerService,
-    private readonly store: Store
+    protected readonly visualizerService: VisualizerService
   ) {
     this.keyboardEvent = fromEvent(window, this.KEYDOWN_EVENT).subscribe(async (event) => {
       await this.handleKeyBoardEvent(event as KeyboardEvent);
@@ -36,12 +33,13 @@ export class VisualizerToggleComponent implements OnDestroy {
       return;
     }
 
-    const state = this.visualizerService.state();
-    if (state == Status.Stopped) {
+    const status = this.visualizerService.status;
+    if (status == Status.Stopped) {
       await this.algorithmService.startSorting();
+      return;
     }
 
-    this.store.dispatch(new UpdateStatus(state == Status.Running ? Status.Paused : Status.Running));
+    this.visualizerService.status = status == Status.Running ? Status.Paused : Status.Running;
   }
 
   private async handleKeyBoardEvent(event: KeyboardEvent) {

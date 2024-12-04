@@ -8,3 +8,10 @@
   align-items: center;
   border-bottom: 2px solid var(--text-color);
 }
+
+.sub-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}

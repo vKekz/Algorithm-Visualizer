@@ -1,10 +1,7 @@
 ﻿import { Injectable } from "@angular/core";
 import { RawData } from "../interfaces/raw-data";
 import { AlgorithmData } from "../interfaces/algorithm-data";
-import { Status } from "../enums/state.enum";
-import { toSignalSync } from "../helpers/toSignalSync";
-import { Store } from "@ngxs/store";
-import { VisualizerState } from "../state/visualizer.state";
+import { Status } from "../enums/status.enum";
 
 @Injectable({
   providedIn: "root",
@@ -12,12 +9,12 @@ import { VisualizerState } from "../state/visualizer.state";
 export class VisualizerService {
   public readonly algorithmData: AlgorithmData;
   public rawSortingData: RawData[];
-  // @ts-ignore
-  public state = toSignalSync(this.store.select(VisualizerState.getStatus));
+  public status: Status;
 
-  constructor(private readonly store: Store) {
+  constructor() {
     this.algorithmData = { comparisons: 0, swaps: 0 };
     this.rawSortingData = [];
+    this.status = Status.Stopped;
   }
 
   public generateRawSortingData(amountOfElements: number) {
@@ -48,14 +45,14 @@ export class VisualizerService {
   }
 
   public isStopped() {
-    return this.state() === Status.Stopped;
+    return this.status === Status.Stopped;
   }
 
   public isPaused() {
-    return this.state() === Status.Paused;
+    return this.status === Status.Paused;
   }
 
   public isRunning() {
-    return this.state() === Status.Running;
+    return this.status === Status.Running;
   }
 }
