@@ -45,9 +45,11 @@ export class VisualizerToggleComponent implements OnDestroy {
   private async handleKeyBoardEvent(event: KeyboardEvent) {
     const key = event.key;
     const keySpace = " ";
+
     if (key === keySpace) {
       await this.handleToggle();
-      event.preventDefault();
     }
+
+    event.preventDefault();
   }
 }

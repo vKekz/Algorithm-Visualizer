@@ -1,7 +1,9 @@
-import { Component } from "@angular/core";
+import { Component, OnDestroy } from "@angular/core";
 import { NgClass, NgStyle } from "@angular/common";
 import { RawData } from "../../../interfaces/raw-data";
 import { VisualizerService } from "../../../services/visualizer.service";
+import { fromEvent, Subscription } from "rxjs";
+import { OptionsService } from "../../../services/options.service";
 
 @Component({
   selector: "app-visualizer",
@@ -10,8 +12,22 @@ import { VisualizerService } from "../../../services/visualizer.service";
   templateUrl: "./visualizer.component.html",
   styleUrl: "./visualizer.component.css",
 })
-export class VisualizerComponent {
-  constructor(protected readonly visualizerService: VisualizerService) {}
+export class VisualizerComponent implements OnDestroy {
+  private keyboardEvent: Subscription;
+  private readonly KEYDOWN_EVENT: string = "keydown";
+
+  constructor(
+    protected readonly visualizerService: VisualizerService,
+    private readonly optionsService: OptionsService
+  ) {
+    this.keyboardEvent = fromEvent(window, this.KEYDOWN_EVENT).subscribe(async (event) => {
+      await this.handleKeyBoardEvent(event as KeyboardEvent);
+    });
+  }
+
+  ngOnDestroy() {
+    this.keyboardEvent.unsubscribe();
+  }
 
   public getStyleClasses(data: RawData) {
     let classes = "";
@@ -27,5 +43,20 @@ export class VisualizerComponent {
     }
 
     return classes;
+  }
+
+  private async handleKeyBoardEvent(event: KeyboardEvent) {
+    if (!this.visualizerService.isStopped()) {
+      return;
+    }
+
+    const key = event.key;
+    const keyR = "r";
+
+    if (key == keyR) {
+      this.visualizerService.generateRawSortingData(this.optionsService.amountOfElements);
+    }
+
+    event.preventDefault();
   }
 }
