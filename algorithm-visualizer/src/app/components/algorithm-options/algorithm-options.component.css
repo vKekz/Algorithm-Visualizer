@@ -1,18 +1,13 @@
 .options-container {
-  height: 100px;
+  height: auto;
   width: 90%;
   margin: auto;
+  padding-bottom: 0.5rem;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   border-bottom: 2px solid var(--text-color);
-}
-
-.middle {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .sub-container {

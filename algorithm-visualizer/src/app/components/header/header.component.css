@@ -1,0 +1,24 @@
+:root {
+  --title-height: 50px;
+}
+
+.title {
+  height: var(--title-height);
+  text-align: center;
+}
+
+.head-container {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.head-container > div {
+  display: table-cell;
+  width: 33%;
+  vertical-align: middle;
+}
+
+.head-container > div:last-child {
+  text-align: right;
+}

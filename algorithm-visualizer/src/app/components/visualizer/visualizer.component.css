@@ -9,13 +9,7 @@
 .visualizer-colum {
   flex: 1;
 
-  margin-right: 1px;
-
   background-color: whitesmoke;
-
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-top: 1px solid black;
 }
 
 .comparison {
@@ -28,4 +22,14 @@
 
 .pivot {
   background-color: cyan;
+}
+
+@media only screen and (min-width: 1024px) {
+  .visualizer-colum {
+    margin-right: 1px;
+
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+  }
 }

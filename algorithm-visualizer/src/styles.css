@@ -2,6 +2,7 @@
   --body-color: linear-gradient(to top right, #f7dd72, #cd956d);
   --text-color: black;
   --button-text-color: #f7dd72;
+  --responsive-break-point: 1024px;
 }
 
 body {

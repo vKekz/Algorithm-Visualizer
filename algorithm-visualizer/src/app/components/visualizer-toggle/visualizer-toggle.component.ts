@@ -48,8 +48,7 @@ export class VisualizerToggleComponent implements OnDestroy {
 
     if (key === keySpace) {
       await this.handleToggle();
+      event.preventDefault();
     }
-
-    event.preventDefault();
   }
 }
