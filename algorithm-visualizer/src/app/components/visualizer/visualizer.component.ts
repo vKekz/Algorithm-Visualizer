@@ -55,8 +55,7 @@ export class VisualizerComponent implements OnDestroy {
 
     if (key == keyR) {
       this.visualizerService.generateRawSortingData(this.optionsService.amountOfElements);
+      event.preventDefault();
     }
-
-    event.preventDefault();
   }
 }
