@@ -3,7 +3,7 @@
 Algorithm visualizer is an Angular based web-application to learn about different sorting algorithms visually.
 This is a group project for the computer science classes at the DHBW.
 
-![visualizer.png](assets/visualizer.png)
+![demo.gif](assets/demo.gif)
 
 # What can it do?
 
