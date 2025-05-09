@@ -1,13 +1,25 @@
 # Algorithm visualizer
 
-Algorithm visualizer is an Angular based web-application to learn about different (sort) algorithms visually.
+Algorithm visualizer is an Angular based web-application to learn about different sorting algorithms visually.
 This is a group project for the computer science classes at the DHBW.
 
-# What will it be able to do?
+![visualizer.png](assets/visualizer.png)
 
-- Visualize algorithms
-- Feed it with custom arrays of data
-- Select the speed of visualization
+# What can it do?
+
+- Visualize sorting algorithms
+   - Bubble sort
+   - Heap sort
+   - Insertion sort
+   - Merge sort
+   - Quick sort
+   - Selection sort
+   - Shell sort
+- Change the speed of visualization
+- Select the amount of elements to be sorted
+- Count the amount of swaps and comparisons
+- Change theme
+- Save changed settings
 
 # Developer information
 
